@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
+    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
+    <meta name="viewport" content="width=1440, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/profileu95setting.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styleguide.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/globals.css') }}">
+    <!-- <link rel="stylesheet" type="text/css" href="css/profileu95setting.css" />
+    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="css/globals.css" /> -->
+  </head>
+  <body style="margin: 0; background: #ffffff">
+    <input type="hidden" id="anPageName" name="page" value="profileu95setting" />
+    <div class="container-center-horizontal">
+      <div class="profileu95setting screen">
+        <div class="sidebar">
+          <div class="overlap-group" onclick="home()" style="cursor: pointer;">
+            <h1 class="title valign-text-middle inter-bold-black-70px">Li.La</h1>
+            <div class="linking-languages-together inter-semi-bold-black-16px">Linking Languages Together</div>
+          </div>
+          <div class="list">
+            <div class="menu-item-3"></div>
+            <div class="menu-item-2 menu-item-3" onclick="profile()" style="cursor: pointer;"><div class="place valign-text-middle small-text">Profile</div></div>
+            <div class="menu-item" onclick="chatrooms()" style="cursor: pointer;"><div class="my-chat valign-text-middle small-text">My Chat</div></div>
+            <div class="menu-item" onclick="users()" style="cursor: pointer;"><div class="find-a-friend valign-text-middle small-text">Find a Friend</div></div>
+          </div>
+        </div>
+        <div class="flex-col">
+          <div class="edit-profile inter-semi-bold-black-28px">Edit profile</div>
+          <div class="form">
+            <div class="profile">
+              <div class="avatar">
+                <img class="rectangle-1" src="{{ url_for('static', filename='img/rectangle-1.png') }}" alt="Rectangle 1" />
+                <!-- <img class="rectangle-1" src="img/rectangle-1.png" alt="Rectangle 1" /> -->
+              </div>
+              <div class="frame-2610465">
+                <div class="name small-text" id="name">{{ user.name }}</div>
+                <div class="change-profile-photo presetsbody2" contenteditable="true">Change profile photo</div>
+              </div>
+            </div>
+            <div class="input">
+              <div class="input-title small-text">Username</div>
+              <div class="field"><div class="label label-2 presetsbody2" id="editName" contenteditable="true">{{ user.name }}</div></div>
+            </div>
+            <div class="input">
+              <div class="input-title-1 small-text">Email</div>
+              <div class="field"><div class="label label-2 presetsbody2" id="email" contenteditable="true">{{ user.email }}</div></div>
+            </div>
+            <div class="input">
+              <div class="information small-text">Information</div>
+              <div class="field"><div class="label label-2 presetsbody2" id="gender" contenteditable="true">{{ user.gender }}</div></div>
+              <div class="field"><div class="label label-2 presetsbody2" id="age" contenteditable="true">{{ user.age }}</div></div>
+              <div class="field"><div class="label label-2 presetsbody2" id="profession" contenteditable="true">{{ user.job }}</div></div>
+              <div class="field"><div class="label label-2 presetsbody2" id="hobby" contenteditable="true">{{ user.hobby }}</div></div>
+              <div class="field"><div class="label label-2 presetsbody2" id="fluent" contenteditable="true">{{ user.fluent }}</div></div>
+              <div class="field"><div class="label label-2 presetsbody2" id="learning" contenteditable="true">{{ user.learning }}</div></div>
+            </div>
+            <div class="large-input">
+              <div class="bio small-text">Bio</div>
+              <div class="text-area">
+                <p class="label-2 presetsbody2" id="bio" contenteditable="true">
+                  {{ user.bio }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="button" style="cursor: pointer;" onclick="submit()"><div class="primary valign-text-middle small-text">Save changes</div></div>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/editProfile.js') }}"></script>
+  </body>
+</html>

@@ -1,0 +1,247 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+@import url("https://fonts.googleapis.com/css?family=Inter:500,400,700,600");
+/* The following line is used to measure usage of this code. You can remove it if you want. */
+@import url("https://px.animaapp.com/662fdc5935112623531687e3.662fdc5a35112623531687e6.gkA6NHS.hcp.png");
+
+
+
+.screen a {
+  display: contents;
+  text-decoration: none;
+}
+
+.container-center-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  pointer-events: none;
+  width: 100%;
+}
+
+.container-center-horizontal > * {
+  flex-shrink: 0;
+  pointer-events: auto;
+}
+
+.valign-text-middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.sidebar {
+  align-items: center;
+  background-color: var(--white);
+  border-color: var(--bon-jour);
+  border-right-style: solid;
+  border-right-width: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  height: 900px;
+  width: 256px;
+}
+
+.menu-item-2 {
+  align-items: center;
+  background-color: var(--black-haze);
+  display: flex;
+  gap: 16px;
+  padding: 0px 16px;
+}
+
+.my-chat {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  color: var(--black);
+  display: -webkit-box;
+  flex: 1;
+  font-weight: 500;
+  line-height: 24px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+.rectangle-1 {
+  height: 64px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 64px;
+}
+
+.primary {
+  color: var(--white);
+  font-weight: 500;
+  line-height: 24px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.menu-item-3 {
+  align-self: stretch;
+  border-radius: 8px;
+  height: 40px;
+  position: relative;
+  width: 100%;
+}
+
+.overlap-group3 {
+  height: 916px;
+  margin-top: -16px;
+  position: relative;
+  width: 1440px;
+}
+
+.headline {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  left: 81px;
+  position: absolute;
+  top: 228px;
+  width: 613px;
+}
+
+.welcome-to-li-la {
+  align-self: stretch;
+  color: var(--black);
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 65.00px;
+  position: relative;
+}
+
+.li-la-links-people-w {
+  align-self: stretch;
+  color: var(--gray);
+  font-weight: 400;
+  line-height: 36px;
+  position: relative;
+}
+
+.x00-primary-button {
+  align-items: center;
+  background-color: var(--black);
+  border-radius: 8px;
+  display: flex;
+  gap: 8px;
+  height: 50px;
+  justify-content: center;
+  left: 279px;
+  padding: 0px 16px;
+  position: absolute;
+  top: 680px;
+  width: 124px;
+}
+
+.join-us {
+  color: var(--white);
+  font-family: var(--font-family-inter);
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 45px;
+  margin-left: -39.00px;
+  margin-right: -39.00px;
+  position: relative;
+  text-align: center;
+  width: 170px;
+}
+
+.are-you-already-a-member {
+  color: var(--black);
+  font-weight: 500;
+  height: 30px;
+  left: 0;
+  line-height: 30px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+}
+
+.click-here-to-login {
+  color: var(--black);
+  font-weight: 500;
+  height: 30px;
+  left: 44px;
+  line-height: 30px;
+  position: absolute;
+  text-decoration: underline;
+  top: 27px;
+  white-space: nowrap;
+}
+
+.copy {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+}
+
+.input-and-button {
+  align-items: flex-start;
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+.search-1 {
+  height: 24px;
+  position: relative;
+  width: 24px;
+}
+
+.contact-bg-1 {
+  height: 905px;
+  margin-top: -3px;
+  width: 720px;
+}
+
+.group {
+  height: 72px;
+  position: relative;
+  width: 402px;
+}
+
+.user-id {
+  color: var(--white);
+  font-weight: 500;
+  left: 0;
+  line-height: 24px;
+  position: absolute;
+  top: 0;
+  width: 295px;
+}
+
+.password {
+  color: var(--white);
+  font-weight: 500;
+  left: 0;
+  line-height: 24px;
+  position: absolute;
+  top: 0;
+  width: 295px;
+}
+
+.continue {
+  color: var(--white);
+  font-weight: 500;
+  line-height: 30px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}

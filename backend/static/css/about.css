@@ -1,0 +1,90 @@
+/* screen - about */
+
+.about {
+  align-items: flex-start;
+  background-color: var(--white);
+  display: flex;
+  height: 900px;
+  width: 1440px;
+}
+
+.about .since-2024-li-la-ha {
+  left: 81px;
+  letter-spacing: -0.48px;
+  line-height: normal;
+  position: absolute;
+  top: 413px;
+  width: 612px;
+}
+
+.about .overlap-group1 {
+  height: 916px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1440px;
+}
+
+.about .navigation {
+  align-items: flex-end;
+  background-color: var(--white);
+  display: flex;
+  height: 164px;
+  left: 0;
+  padding: 4px 80px;
+  position: absolute;
+  top: 16px;
+  width: 1440px;
+}
+
+.about .overlap-group {
+  height: 151px;
+  position: relative;
+  width: 392px;
+}
+
+.about .title {
+  height: 144px;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 144px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.about .linking-languages-together {
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 117px;
+}
+
+.about .blackwhite-1 {
+  height: 916px;
+  left: 817px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 515px;
+}
+
+.about .overlap-group2 {
+  height: 57px;
+  left: 211px;
+  position: absolute;
+  top: 742px;
+  width: 261px;
+}
+
+.about .copyright {
+  height: 24px;
+  left: 18px;
+  letter-spacing: 0;
+  line-height: 24px;
+  position: absolute;
+  text-align: center;
+  top: 868px;
+  white-space: nowrap;
+}

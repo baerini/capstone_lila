@@ -1,0 +1,753 @@
+/* screen - chat */
+
+.chat {
+  align-items: flex-start;
+  background-color: #f5f5f5;
+  display: flex;
+  width: 1440px;
+}
+
+.chat .list {
+  background-color: var(--white);
+  border-color: var(--bon-jour);
+  border-right-style: solid;
+  border-right-width: 1px;
+  display: flex;
+  height: 900px;
+  width: 400px;
+}
+
+.chat .overlap-group1 {
+  height: 116px;
+  margin-left: 24px;
+  margin-top: -9px;
+  position: relative;
+  width: 224px;
+}
+
+.chat .title {
+  height: 105px;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 105px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.chat .linking-languages-together {
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 97px;
+  white-space: nowrap;
+}
+
+.chat .search {
+  align-items: center;
+  align-self: center;
+  background-color: var(--white);
+  border: 1px solid;
+  border-color: var(--bon-jour);
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  height: 40px;
+  margin-top: 25px;
+  padding: 8px 16px 8px 12px;
+  position: relative;
+  width: 352px;
+}
+
+.chat .label {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  color: var(--gray);
+  display: -webkit-box;
+  flex: 1;
+  font-weight: 400;
+  line-height: 24px;
+  margin-top: -1.00px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+.chat .chat-list {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  position: relative;
+  width: 400px;
+}
+
+.chat .conversation-1 {
+  align-self: stretch;
+  background-color: var(--black-haze);
+  flex: 0 0 auto;
+  gap: 16px;
+  padding: 12px 16px;
+  position: relative;
+  width: 100%;
+}
+
+.chat .avatar {
+  height: 64px;
+  width: 64px;
+}
+
+.chat .text {
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+}
+
+.chat .name {
+  color: var(--black);
+  line-height: 30px;
+  margin-top: -1.00px;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.chat .name-1 {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  align-self: stretch;
+  color: var(--tundora);
+  display: -webkit-box;
+  line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat .conversation {
+  align-self: stretch;
+  border-radius: 8px;
+  flex: 0 0 auto;
+  gap: 16px;
+  padding: 12px 16px;
+  position: relative;
+  width: 100%;
+}
+
+.chat .name-2 {
+  color: var(--black);
+  line-height: 30px;
+  margin-top: -1.00px;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.chat .lets-go {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  align-self: stretch;
+  color: var(--tundora);
+  display: -webkit-box;
+  font-weight: 400;
+  line-height: 24px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+.chat .name-3 {
+  color: var(--black);
+  line-height: 30px;
+  margin-top: -1.00px;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.chat .trueeeeee {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  align-self: stretch;
+  color: var(--tundora);
+  display: -webkit-box;
+  font-weight: 400;
+  line-height: 24px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+.chat .rectangle-1-1 {
+  height: 64px;
+  width: 64px;
+}
+
+.chat .name-4 {
+  color: var(--black);
+  line-height: 30px;
+  margin-top: -1.00px;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.chat .lol-yeah-are-you-co {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  align-self: stretch;
+  color: var(--tundora);
+  display: -webkit-box;
+  font-weight: 400;
+  line-height: 24px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+.chat .name-5 {
+  color: var(--black);
+  line-height: 30px;
+  margin-top: -1.00px;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.chat .great-catching-up-over-dinner {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  align-self: stretch;
+  color: var(--tundora);
+  display: -webkit-box;
+  font-weight: 400;
+  line-height: 24px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+.chat .giannis-constantinou {
+  color: var(--black);
+  font-weight: 500;
+  line-height: 30px;
+  margin-top: -1.00px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.chat .yep {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  align-self: stretch;
+  color: var(--tundora);
+  display: -webkit-box;
+  font-weight: 400;
+  line-height: 24px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+.chat .name-6 {
+  color: var(--black);
+  line-height: 30px;
+  margin-top: -1.00px;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.chat .when-are-you-coming {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  align-self: stretch;
+  color: var(--tundora);
+  display: -webkit-box;
+  font-weight: 400;
+  line-height: 24px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+.chat .mom {
+  color: var(--black);
+  font-weight: 500;
+  line-height: 30px;
+  margin-top: -1.00px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.chat .thanks {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  align-self: stretch;
+  color: var(--tundora);
+  display: -webkit-box;
+  font-weight: 400;
+  line-height: 24px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+.chat .conversation-2 {
+  background-color: var(--white);
+  flex-direction: column;
+  gap: 32px;
+  height: 900px;
+  width: 784px;
+}
+
+.chat .overlap-group {
+  height: 804px;
+  position: relative;
+  width: 784px;
+}
+
+.chat .messages {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  left: 24px;
+  position: absolute;
+  top: 32px;
+  width: 736px;
+  margin-top: 55px;
+}
+
+.chat .bubble {
+  align-items: flex-end;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  width: 100%;
+}
+
+.chat .frame-261036 {
+  background-color: var(--black);
+  border-radius: 16px 16px 4px 16px;
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+  max-width: 480px;
+  padding: 12px 16px;
+}
+
+.chat .no-honestly-im-thin {
+  color: var(--white);
+  flex: 1;
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: -1.00px;
+  position: relative;
+}
+
+.chat .this-is-the-main-chat-template {
+  color: var(--white);
+  flex: 1;
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: -1.00px;
+  position: relative;
+}
+
+.chat .date {
+  align-self: stretch;
+  color: var(--gray);
+  font-weight: 400;
+  height: 24px;
+  line-height: 24px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.chat .bubbles {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  width: 100%;
+}
+
+.chat .frame-26103 {
+  background-color: var(--bon-jour);
+  border-radius: 24px 16px 16px 4px;
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+  max-width: 480px;
+  padding: 12px 16px;
+}
+
+.chat .oh {
+  color: var(--black);
+  flex: 1;
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: -1.00px;
+  position: relative;
+}
+
+.chat .cool {
+  color: var(--black);
+  flex: 1;
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: -1.00px;
+  position: relative;
+}
+
+.chat .how-does-it-work {
+  color: var(--black);
+  flex: 1;
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: -1.00px;
+  position: relative;
+}
+
+.chat .simple {
+  color: var(--white);
+  flex: 1;
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: -1.00px;
+  position: relative;
+}
+
+.chat .you-just-edit-any-te {
+  color: var(--white);
+  flex: 1;
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: -1.00px;
+  position: relative;
+}
+
+.chat .place {
+  color: var(--white);
+  flex: 1;
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: -1.00px;
+  position: relative;
+}
+
+.chat .hmmm {
+  color: var(--black);
+  flex: 1;
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: -1.00px;
+  position: relative;
+}
+
+.chat .i-think-i-get-it {
+  color: var(--black);
+  flex: 1;
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: -1.00px;
+  position: relative;
+}
+
+.chat .name-7 {
+  color: var(--black);
+  flex: 1;
+  line-height: 24px;
+  margin-top: -1.00px;
+}
+
+.chat .chat-header {
+  align-items: center;
+  background-color: var(--white);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: var(--bon-jour);
+  display: flex;
+  gap: 361px;
+  height: 80px;
+  left: 0;
+  padding: 0 24px;
+  position: absolute;
+  top: 0;
+  width: 784px;
+}
+
+.chat .person {
+  display: inline-flex;
+  gap: 16px;
+}
+
+.chat .avatar-1 {
+  height: 48px;
+  width: 48px;
+}
+
+.chat .rectangle-1-2 {
+  height: 48px;
+  object-fit: cover;
+  width: 48px;
+}
+
+.chat .text-1 {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.chat .name-8 {
+  color: var(--black);
+  line-height: 24px;
+  margin-top: -1.00px;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.chat .fluent-in-englishlearning-arabic {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  color: var(--tundora);
+  display: -webkit-box;
+  font-weight: 400;
+  line-height: 24px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.chat .icons {
+  height: 24px;
+  position: relative;
+  width: 72px;
+}
+
+.chat .reply {
+  align-items: center;
+  background-color: var(--white);
+  border: 1px solid;
+  border-color: var(--bon-jour);
+  border-radius: 8px;
+  display: flex;
+  gap: 16px;
+  height: 40px;
+  padding: 8px 16px;
+  position: relative;
+  width: 736px;
+}
+
+.chat .mic {
+  height: 24px;
+  position: relative;
+  width: 24px;
+}
+
+.chat .smile {
+  height: 24px;
+  position: relative;
+  width: 24px;
+}
+
+.chat .profile {
+  align-items: center;
+  background-color: var(--white);
+  border-color: var(--bon-jour);
+  border-left-style: solid;
+  border-left-width: 1px;
+  display: flex;
+  flex-direction: column;
+  height: 900px;
+  padding: 24px 0;
+  width: 256px;
+}
+
+.chat .person-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 208px;
+}
+
+.chat .avatar-2 {
+  height: 128px;
+  width: 128px;
+}
+
+.chat .rectangle-1-3 {
+  height: 128px;
+  object-fit: cover;
+  width: 128px;
+}
+
+.chat .frame-2610364 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.chat .name-9 {
+  align-self: stretch;
+  color: var(--black);
+  line-height: 30px;
+  margin-top: -1.00px;
+  text-align: center;
+}
+
+.chat .fluent-in-englishlearning-arabic-1 {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  align-self: stretch;
+  color: var(--tundora);
+  display: -webkit-box;
+  font-weight: 400;
+  height: 63px;
+  line-height: 24px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  text-overflow: ellipsis;
+}
+
+.chat .button {
+  align-items: center;
+  background-color: var(--black);
+  border-radius: 8px;
+  display: flex;
+  gap: 8px;
+  height: 40px;
+  justify-content: center;
+  margin-top: 18px;
+  padding: 0px 16px;
+  position: relative;
+  width: 208px;
+}
+
+.chat .list-1 {
+  align-self: flex-end;
+  display: inline-flex;
+  margin-top: 19px;
+  position: relative;
+}
+
+.chat .menu-item {
+  align-items: center;
+  background-color: var(--white);
+  border-radius: 8px;
+  display: flex;
+  gap: 16px;
+  height: 40px;
+  padding: 0px 16px;
+  position: relative;
+  width: 240px;
+}
+
+.chat .search-2 {
+  height: 24px;
+  position: relative;
+  width: 24px;
+}
+
+.chat .search-chat {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  color: var(--black);
+  display: -webkit-box;
+  flex: 1;
+  font-weight: 500;
+  line-height: 24px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+.chat .sent-images {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  color: var(--black);
+  display: -webkit-box;
+  flex: 1;
+  font-weight: 500;
+  line-height: 24px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+.chat .more-horizontal {
+  height: 24px;
+  position: relative;
+  width: 24px;
+}
+
+.chat .more-options {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  color: var(--black);
+  display: -webkit-box;
+  flex: 1;
+  font-weight: 500;
+  line-height: 24px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+.chat .avatar-3 {
+  background-color: var(--black-haze);
+  border-radius: 1000px;
+  overflow: hidden;
+  position: relative;
+}
+
+.chat .conversation-3 {
+  align-items: center;
+  display: flex;
+}
+
+.chat .frame {
+  align-items: center;
+  flex: 0 0 auto;
+  position: relative;
+}
+
+.chat .image-2 {
+  height: 24px;
+  position: relative;
+  width: 24px;
+}
+
+.chat .list-2 {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.chat .name-10 {
+  font-weight: 500;
+  position: relative;
+}
+
+.chat .person-2 {
+  align-items: center;
+  position: relative;
+}
+
+.chat .rectangle-1-4 {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.chat .text-2 {
+  align-items: flex-start;
+  flex-direction: column;
+  position: relative;
+}

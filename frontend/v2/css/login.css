@@ -1,0 +1,93 @@
+/* screen - login */
+
+.login {
+  align-items: flex-start;
+  background-color: var(--white);
+  display: flex;
+  min-width: 1440px;
+}
+
+.login .overlap-group {
+  align-items: flex-end;
+  background-image: url(../img/1-1.png);
+  background-position: 50% 50%;
+  background-size: cover;
+  display: flex;
+  height: 900px;
+  min-width: 1440px;
+  padding: 300px 436px;
+}
+
+.login .content {
+  align-items: center;
+  background-color: var(--eerie-black);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 299px;
+  padding: 30px 0px;
+  position: relative;
+  width: 567px;
+}
+
+.login .title {
+  letter-spacing: -0.24px;
+  line-height: 36px;
+  margin-top: -1.00px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.login .x02-input-field {
+  align-items: center;
+  background-color: var(--white);
+  border: 1px solid;
+  border-color: var(--bon-jour);
+  border-radius: 8px;
+  display: flex;
+  gap: 16px;
+  height: 40px;
+  padding: 8px 16px;
+  position: relative;
+  width: 400px;
+}
+
+.login .label {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  color: var(--gray);
+  display: -webkit-box;
+  flex: 1;
+  font-weight: 500;
+  line-height: 30px;
+  margin-bottom: -2.00px;
+  margin-top: -4.00px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+.login .button {
+  align-items: center;
+  background-color: var(--gray);
+  border-radius: 8px;
+  display: flex;
+  gap: 8px;
+  height: 40px;
+  justify-content: center;
+  padding: 0px 16px;
+  position: relative;
+  width: 400px;
+}
+
+.login .login-1 {
+  color: var(--white);
+  font-weight: 500;
+  line-height: 30px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}

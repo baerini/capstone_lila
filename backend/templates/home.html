@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
+    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
+    <meta name="viewport" content="width=1440, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styleguide.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/globals.css') }}">
+    <!-- <link rel="stylesheet" type="text/css" href="css/home.css" />
+    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="css/globals.css" /> -->
+  </head>
+  <body style="margin: 0; background: #ffffff">
+    <input type="hidden" id="anPageName" name="page" value="home" />
+    <div class="container-center-horizontal">
+      <div class="home screen">
+        <div class="overlap-group2 overlap">
+          <div class="overlap-group overlap">
+            <p class="since-2024-li-la-ha inter-bold-black-24px">
+              Since 2024, Li.La has endeavored to create a platform where anyone with a passion to learn and teach a new
+              language could meet and share their languages together. <br /><br />Whenever, wherever, users can help
+              each other <br />learn new languages they are each fluent in.
+            </p>
+            <div class="overlap-group overlap">
+              <div class="navigation">
+                <div class="overlap-group-1">
+                  <h1 class="title valign-text-middle inter-bold-black-96px">Li.La</h1>
+                  <div class="linking-languages-together inter-semi-bold-black-28px">Linking Languages Together</div>
+                </div>
+                <div class="items body-text">
+                  <div class="items-item valign-text-middle" style="cursor: pointer;" onclick="users()">FIND A FRIEND</div>
+                  <div class="items-item valign-text-middle" style="cursor: pointer;" onclick="chatrooms()">MY CHAT</div>
+                  <div class="items-item valign-text-middle" style="cursor: pointer;" onclick="profile()">PROFILE</div>
+                </div>
+              </div>
+              <img class="blackwhite-1" src="{{ url_for('static', filename='img/black-white-1.png') }}" alt="black&amp;white 1" />
+              <!-- <img class="blackwhite-1" src="img/black-white-1.png" alt="black&amp;white 1" /> -->
+            </div>
+            <div class="copyright valign-text-middle inter-bold-black-16px">© Li.La 2024</div>
+          </div>
+          <p class="find-a-friend-to-chat-with title">Find a friend to <br />chat with.</p>
+        </div>
+      </div>
+    </div>
+    <script>
+      function users() {
+        window.location.href="/users"
+      }
+      
+      function chatrooms() {
+        window.location.href="/chatrooms"
+      }
+      
+      function profile() {
+        window.location.href="/profile"
+      }
+    </script>
+  </body>
+</html>

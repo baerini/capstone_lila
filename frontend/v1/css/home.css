@@ -1,0 +1,119 @@
+/* screen - home */
+
+.home {
+  align-items: flex-start;
+  background-color: var(--white);
+  display: flex;
+  width: 1440px;
+}
+
+.home .overlap-group2 {
+  position: relative;
+}
+
+.home .overlap-group {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.home .since-2024-li-la-ha {
+  left: 81px;
+  letter-spacing: -0.48px;
+  line-height: normal;
+  position: absolute;
+  top: 397px;
+  width: 612px;
+}
+
+.home .navigation {
+  align-items: center;
+  background-color: var(--white);
+  display: flex;
+  gap: 459px;
+  height: 164px;
+  left: 0;
+  padding: 4px 80px;
+  position: absolute;
+  top: 0;
+  width: 1440px;
+}
+
+.home .overlap-group-1 {
+  align-self: flex-end;
+  height: 151px;
+  position: relative;
+  width: 392px;
+}
+
+.home .title {
+  height: 144px;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 144px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.home .linking-languages-together {
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 117px;
+}
+
+.home .items {
+  align-items: center;
+  display: inline-flex;
+  gap: 48px;
+  justify-content: flex-end;
+  margin-bottom: 22.0px;
+  position: relative;
+}
+
+.home .items-item {
+  color: var(--black);
+  font-weight: 500;
+  line-height: 30px;
+  margin-top: -1.00px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.home .blackwhite-1 {
+  height: 756px;
+  left: 829px;
+  object-fit: cover;
+  position: absolute;
+  top: 144px;
+  width: 514px;
+}
+
+.home .copyright {
+  height: 24px;
+  left: 18px;
+  letter-spacing: 0;
+  line-height: 24px;
+  position: absolute;
+  text-align: center;
+  top: 852px;
+  white-space: nowrap;
+}
+
+.home .find-a-friend-to-chat-with {
+  color: var(--black);
+  font-weight: 700;
+  left: 81px;
+  line-height: normal;
+  position: absolute;
+  top: 211px;
+  width: 613px;
+}
+
+.home .overlap {
+  height: 900px;
+  width: 1440px;
+}

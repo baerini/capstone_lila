@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
+    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
+    <meta name="viewport" content="width=1440, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/chat.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styleguide.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/globals.css') }}">
+    <!-- <link rel="stylesheet" type="text/css" href="css/chat.css" />
+    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="css/globals.css" /> -->
+  </head>
+  <body style="margin: 0; background: #f5f5f5">
+    <input type="hidden" id="anPageName" name="page" value="chat" />
+    <div class="container-center-horizontal">
+      <div class="chat screen">
+        <div class="list list-2">
+          <div class="overlap-group1" style="cursor: pointer;" onclick="home()">
+            <h1 class="title valign-text-middle inter-bold-black-70px">Li.La</h1>
+            <div class="linking-languages-together inter-semi-bold-black-16px">Linking Languages Together</div>
+          </div>
+          <div class="search">
+            <img class="search-1" src="{{ url_for('static', filename='img/search.svg') }}" style="cursor: pointer;" alt="search" />
+            <!-- <img class="search-1" src="img/search.svg" alt="search" /> -->
+            <div class="label presetsbody2">Search chats</div>
+          </div>
+          <div id="chatrooms" class="chat-list">
+            <!-- <div class="conversation-1 conversation-3">
+              <div class="avatar avatar-3"><img class="rectangle-1" src="img/rectangle-1.png" alt="Rectangle 1" /></div>
+              <div class="text text-2">
+                <div class="name name-10 body-text">Helena Hills</div>
+                <p class="name-1 name-10 small-text">Will head to the Help Center...</p>
+              </div>
+            </div> -->
+            {% for chatroom in chatrooms %}
+            <div class="conversation conversation-3" style="cursor: pointer;" id="{{ chatroom.id }}" onclick="enter(this)">
+              <div class="avatar avatar-3">
+                <img class="rectangle-1" src="{{ url_for('static', filename='img/' + chatroom.receiver.url) }}" style="cursor: pointer;" alt="Rectangle 1" />
+                <!-- <img class="rectangle-1" src="img/rectangle-1-1.png" alt="Rectangle 1" /> -->
+              </div>
+              <div class="text text-2">
+                <div class="name-2 name-10 body-text">{{ chatroom.receiver.name }}</div>
+                <div class="lets-go presetsbody2">{{ chatroom.final_message }}</div>
+              </div>
+            </div>
+            {% endfor %}
+            <!-- <div class="conversation conversation-3">
+              <div class="avatar avatar-3">
+                <img class="rectangle-1" src="img/rectangle-1-1.png" alt="Rectangle 1" />
+              </div>
+              <div class="text text-2">
+                <div class="name-2 name-10 body-text">Carlo Emilio</div>
+                <div class="lets-go presetsbody2">Let’s go</div>
+              </div>
+            </div> -->
+            <!-- <div class="conversation conversation-3">
+              <div class="avatar avatar-3">
+                <img class="rectangle-1" src="img/rectangle-1-2.png" alt="Rectangle 1" />
+              </div>
+              <div class="text text-2">
+                <div class="name-3 name-10 body-text">Oscar Davis</div>
+                <div class="trueeeeee presetsbody2">Trueeeeee</div>
+              </div>
+            </div>
+            <div class="conversation conversation-3">
+              <div class="avatar avatar-3">
+                <img class="rectangle-1-1 rectangle-1-4" src="img/rectangle-1-6@2x.png" alt="Rectangle 1" />
+              </div>
+              <div class="text text-2">
+                <div class="name-4 name-10 body-text">Daniel Jay Park</div>
+                <p class="lol-yeah-are-you-co presetsbody2">lol yeah, are you coming to the lunch on the 13th?</p>
+              </div>
+            </div>
+            <div class="conversation conversation-3">
+              <div class="avatar avatar-3">
+                <img class="rectangle-1" src="img/rectangle-1-7@2x.png" alt="Rectangle 1" />
+              </div>
+              <div class="text text-2">
+                <div class="name-5 name-10 body-text">Mark Rojas</div>
+                <p class="great-catching-up-over-dinner presetsbody2">great catching up over dinner!!</p>
+              </div>
+            </div>
+            <div class="conversation conversation-3">
+              <div class="avatar avatar-3">
+                <img class="rectangle-1" src="img/rectangle-1-3.png" alt="Rectangle 1" />
+              </div>
+              <div class="text text-2">
+                <div class="giannis-constantinou body-text">Giannis Constantinou</div>
+                <div class="yep presetsbody2">yep 🫡🫡</div>
+              </div>
+            </div>
+            <div class="conversation conversation-3">
+              <div class="avatar avatar-3">
+                <img class="rectangle-1" src="img/rectangle-1-4.png" alt="Rectangle 1" />
+              </div>
+              <div class="text text-2">
+                <div class="name-6 name-10 body-text">Briana Lewis</div>
+                <p class="when-are-you-coming presetsbody2">
+                  When are you coming back to town? Would love to catch up.
+                </p>
+              </div>
+            </div>
+            <div class="conversation conversation-3">
+              <div class="avatar avatar-3">
+                <img class="rectangle-1" src="img/rectangle-1-5.png" alt="Rectangle 1" />
+              </div>
+              <div class="text text-2">
+                <div class="mom body-text">Mom</div>
+                <div class="thanks presetsbody2">Thanks!</div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <div class="conversation-2 conversation-3">
+          <div class="overlap-group">
+            <div class="messages">
+              <!-- <div class="bubble">
+                <div class="frame-261036 frame">
+                  <p class="no-honestly-im-thin small-text">No honestly I’m thinking of a career pivot</p>
+                </div>
+                <div class="frame-261036 frame">
+                  <p class="this-is-the-main-chat-template small-text">This is the main chat template</p>
+                </div>
+              </div>
+              <p class="date presetsbody2">Nov 30, 2023, 9:41 AM</p>
+              <div class="bubbles">
+                <div class="frame-26103 frame"><div class="oh small-text">Oh?</div></div>
+                <div class="frame-26103 frame"><div class="cool small-text">Cool</div></div>
+                <div class="frame-26103 frame"><div class="how-does-it-work small-text">How does it work?</div></div>
+              </div>
+              <div class="bubble">
+                <div class="frame-261036 frame"><div class="simple small-text">Simple</div></div>
+                <div class="frame-261036 frame">
+                  <p class="you-just-edit-any-te small-text">
+                    You just edit any text to type in the conversation you want to show, and delete any bubbles you
+                    don’t want to use
+                  </p>
+                </div>
+                <div class="frame-261036 frame"><div class="place small-text">Boom</div></div>
+              </div>
+              <div class="bubbles">
+                <div class="frame-26103 frame"><div class="hmmm small-text">Hmmm</div></div>
+                <div class="frame-26103 frame"><p class="i-think-i-get-it small-text">I think I get it</p></div>
+                <div class="frame-26103 frame">
+                  <p class="name-7 name-10 small-text">Will head to the Help Center if I have more questions tho</p>
+                </div>
+              </div> -->
+            </div>
+            <div class="chat-header">
+              <!-- <div class="person person-2">
+                <div class="avatar-1 avatar-3">
+                  <img class="rectangle-1-2 rectangle-1-4" src="img/rectangle-1.png" alt="Rectangle 1" />
+                </div>
+                <div class="text-1 text-2">
+                  <div class="name-8 name-10 small-text">Helena Hills</div>
+                  <div class="fluent-in-englishlearning-arabic presetsbody2">fluent in English/learning Arabic</div>
+                </div>
+              </div>
+              <img class="icons" src="{{ url_for('static', filename='img/icons.svg') }}" style="cursor: pointer;" alt="Icons" /> -->
+              <!-- <img class="icons" src="img/icons.svg" alt="Icons" /> -->
+            </div>
+          </div>
+          <div class="reply">
+            <!-- <div class="label presetsbody2">Enter your message</div>
+            <img class="mic" src="{{ url_for('static', filename='img/mic.svg') }}" style="cursor: pointer;" alt="mic" />
+            <img class="smile" src="{{ url_for('static', filename='img/smile.svg') }}" style="cursor: pointer;" alt="smile" />
+            <img class="image-2" src="{{ url_for('static', filename='img/image-1.svg') }}" style="cursor: pointer;" alt="image" /> -->
+          </div>
+        </div>
+        <div class="profile">
+          <!-- <div class="person-1 person-2">
+            <div class="avatar-2 avatar-3">
+              <img class="rectangle-1-3 rectangle-1-4" src="img/rectangle-1.png" alt="Rectangle 1" />
+            </div>
+            <div class="frame-2610364 frame">
+              <div class="name-9 name-10 body-text">Helena</div>
+              <div class="fluent-in-englishlearning-arabic-1 presetsbody2">fluent in English<br />learning Arabic</div>
+            </div>
+          </div>
+          <div class="button"><div class="primary valign-text-middle small-text">View profile</div></div>
+          <div class="list-1 list-2">
+            <div class="menu-item">
+              <img class="search-2" src="{{ url_for('static', filename='img/search-1.svg') }}" style="cursor: pointer;" alt="search" />
+              <div class="search-chat valign-text-middle small-text">Search chat</div>
+            </div>
+            <div class="menu-item">
+              <img class="image-2" src="{{ url_for('static', filename='img/image.svg') }}" style="cursor: pointer;" alt="image" />
+              <div class="sent-images valign-text-middle small-text">Sent images</div>
+            </div>
+            <div class="menu-item">
+              <img class="more-horizontal" src="{{ url_for('static', filename='img/more-horizontal.svg') }}" style="cursor: pointer;" alt="more-horizontal" />
+              <div class="more-options valign-text-middle small-text">More options</div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <script>
+      function home() {
+        window.location.href="/";
+      }
+      
+      function enter(element) {
+        url = "/chatroom/" + element.id;
+        console.log(url);
+        window.location.href=url;
+      }
+      
+      var socket = io.connect('http://localhost:5000');
+      var chatroomsDiv = document.getElementById("chatrooms");
+      socket.on('message', function(data) {
+        data = JSON.parse(data);
+        msgDiv = document.getElementById('messages');
+        
+        var id = data["id"];
+        
+        var chatroomsDiv = document.getElementById("chatrooms");
+        
+        $.ajax({
+          url: '/get_chatrooms',
+          type: 'GET',
+          success: function(data) {
+            var chatroomElements = chatroomsDiv.children;
+
+            for (var i = 0; i < chatroomElements.length; i++) {
+                var chatroomElement = chatroomElements[i];
+                if (chatroomElement.id == id) {
+                    chatroomsDiv.removeChild(chatroomElement);
+                    break;
+                }
+            }
+            
+            data.forEach(function(chatroom) {
+              if (chatroom.id == id) {
+                chatroomsDiv.insertAdjacentHTML('afterbegin', `
+                    <div class="conversation conversation-3" style="cursor: pointer;" id="${chatroom.id}" onclick="enter(this)">
+                        <div class="avatar avatar-3">
+                            <img class="rectangle-1" src="/static/img/${chatroom.url}" style="cursor: pointer;" alt="Rectangle 1" />
+                        </div>
+                        <div class="text text-2">
+                            <div class="name-2 name-10 body-text">${chatroom.name}</div>
+                            <div class="lets-go presetsbody2">${chatroom.final_message}</div>
+                        </div>
+                    </div>
+                `);
+              }
+            });
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

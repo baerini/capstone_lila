@@ -1,0 +1,74 @@
+/* screen - joined */
+
+.joined {
+  align-items: flex-start;
+  background-color: var(--white);
+  display: flex;
+  min-width: 1440px;
+}
+
+.joined .overlap-group {
+  align-items: flex-end;
+  background-image: url(../img/1-1.png);
+  background-position: 50% 50%;
+  background-size: cover;
+  display: flex;
+  height: 900px;
+  min-width: 1440px;
+  padding: 352px 436px;
+}
+
+.joined .content {
+  align-items: center;
+  background-color: var(--eerie-black);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 195px;
+  padding: 30px 0px;
+  position: relative;
+  width: 567px;
+}
+
+.joined .title {
+  letter-spacing: -0.24px;
+  line-height: 36px;
+  margin-top: -1.00px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.joined .welcome-to-li-la-yo {
+  color: var(--white);
+  font-weight: 400;
+  line-height: 24px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.joined .button {
+  align-items: center;
+  background-color: var(--gray);
+  border-radius: 8px;
+  display: flex;
+  gap: 8px;
+  height: 40px;
+  justify-content: center;
+  padding: 0px 16px;
+  position: relative;
+  width: 400px;
+}
+
+.joined .login {
+  color: var(--white);
+  font-weight: 500;
+  line-height: 30px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}

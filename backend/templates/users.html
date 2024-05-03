@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
+    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
+    <meta name="viewport" content="width=1440, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/findu95au95friend.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styleguide.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/globals.css') }}">
+    <!-- <link rel="stylesheet" type="text/css" href="css/findu95au95friend.css" />
+    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="css/globals.css" /> -->
+  </head>
+  <body style="margin: 0; background: #ffffff">
+    <input type="hidden" id="anPageName" name="page" value="findu95au95friend" />
+    <div class="container-center-horizontal">
+      <div class="findu95au95friend screen">
+        <div class="sidebar">
+          <div class="overlap-group" style="cursor: pointer;" onclick="home()">
+            <h1 class="title valign-text-middle inter-bold-black-70px">Li.La</h1>
+            <div class="linking-languages-together inter-semi-bold-black-16px">Linking Languages Together</div>
+          </div>
+          <div class="list list-2">
+            <div class="menu-item-3"></div>
+            <div class="menu-item-2 menu-item-3" onclick="users()" style="cursor: pointer;">
+              <div class="place valign-text-middle place-3 small-text">Find a friend</div>
+            </div>
+            <div class="menu-item" style="cursor: pointer;" onclick="chatrooms()"><div class="my-chat valign-text-middle small-text">My Chat</div></div>
+            <div class="menu-item" style="cursor: pointer;" onclick="profile()"><div class="profile valign-text-middle small-text">Profile</div></div>
+          </div>
+        </div>
+        <div class="flex-col">
+          <header class="header">
+            <div class="find-a-friend valign-text-middle" style="cursor: pointer;">Find a friend</div>
+            <div class="flex-row">
+              <div class="search">
+                <img class="search-1" src="{{ url_for('static', filename='img/search.svg') }}" style="cursor: pointer;" alt="search" />
+                <!-- <img class="search-1" src="img/search.svg" alt="search" /> -->
+                <div class="label-2 label-4 presetsbody2" style="cursor: pointer;">Search</div>
+              </div>
+              <div class="filter" style="cursor: pointer;">
+                <img class="filter-1" src="{{ url_for('static', filename='img/filter.svg') }}" alt="filter" />
+                <!-- <img class="filter-1" src="img/filter.svg" alt="filter" /> -->
+                <div class="label-3 label-4 presetsbody2">Filter</div>
+              </div>
+              <div class="segmented-control">
+                <img class="item-1 item-2" src="{{ url_for('static', filename='img/item-1.svg') }}" style="cursor: pointer;" alt="Item 1" />
+                <!-- <img class="item-1 item-2" src="img/item-1.svg" alt="Item 1" /> -->
+                <img class="item item-2" src="{{ url_for('static', filename='img/item-2.svg') }}" style="cursor: pointer;" alt="Item 2" />
+                <!-- <img class="item item-2" src="img/item-2.svg" alt="Item 2" /> -->
+                <img class="item item-2" src="{{ url_for('static', filename='img/item-3.svg') }}" style="cursor: pointer;" alt="Item 3" />
+                <!-- <img class="item item-2" src="img/item-3.svg" alt="Item 3" /> -->
+              </div>
+            </div>
+          </header>
+          <div class="list-1 list-2">
+            <div class="navbar small-text">
+              <div class="navbar-link-place navbar-link">Name</div>
+              <div class="navbar-link-fluent-in">Fluent in</div>
+              <div class="navbar-link-learning navbar-link">Learning</div>
+              <div class="navbar-link-level navbar-link">Level</div>
+              <div class="navbar-link-gender navbar-link">Gender</div>
+              <div class="navbar-link-age navbar-link">Age</div>
+              <div class="navbar-link-hobby navbar-link">Hobby</div>
+            </div>
+            
+            {% for user in users %}
+            <div class="list-item list-2">
+              <div class="navbar-link-minji navbar-link small-text" id="name" style="cursor: pointer;" onclick="submit(this)">{{ user.name }}</div>
+              <div class="language language-2 small-text">{{ user.fluent }}</div>
+              <div class="language-1 language-2 small-text">{{ user.learning }}</div>
+              <div class="pill pill-2">
+                <div class="tag tag-24"><div class="label label-4 inter-semi-bold-black-12px">{{ user.level }}</div></div>
+              </div>
+              <div class="pill-1 pill-2">
+                <div class="tag-1 tag-24"><div class="label label-4 inter-semi-bold-black-12px">{{ user.gender }}</div></div>
+              </div>
+              <div class="number presetsbody2">{{ user.age }}</div>
+              <div class="navbar-link-reading-books presetsbody2">{{ user.hobby }}</div>
+              <img class="dot-12" style="cursor: pointer;" src="{{ url_for('static', filename='img/dot.svg') }}" style="cursor: pointer;" alt="Dot" />
+              <!-- <img class="dot-12" src="img/dot.svg" alt="Dot" /> -->
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function home() {
+        window.location.href="/"
+      }
+      
+      function users() {
+        window.location.href="/users"
+      }
+      
+      function chatrooms() {
+        window.location.href="/chatrooms"
+      }
+      
+      function profile() {
+        window.location.href="/profile"
+      }
+    </script>
+    <script src="{{ url_for('static', filename='js/users.js') }}"></script>
+  </body>
+</html>

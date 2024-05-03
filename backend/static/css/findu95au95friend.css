@@ -1,0 +1,663 @@
+/* screen - findu95au95friend */
+
+.findu95au95friend {
+  align-items: flex-start;
+  background-color: var(--white);
+  display: flex;
+  min-width: 1440px;
+}
+
+.findu95au95friend .overlap-group {
+  height: 116px;
+  margin-top: -1px;
+  position: relative;
+  width: 224px;
+}
+
+.findu95au95friend .title {
+  height: 105px;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 105px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.findu95au95friend .linking-languages-together {
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 97px;
+  white-space: nowrap;
+}
+
+.findu95au95friend .list {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 4px;
+  width: 240px;
+}
+
+.findu95au95friend .place {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  flex: 1;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.findu95au95friend .menu-item {
+  align-items: center;
+  align-self: stretch;
+  background-color: var(--white);
+  border-radius: 8px;
+  display: flex;
+  gap: 16px;
+  height: 40px;
+  padding: 0px 16px;
+  position: relative;
+  width: 100%;
+}
+
+.findu95au95friend .profile {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  color: var(--black);
+  display: -webkit-box;
+  flex: 1;
+  font-weight: 500;
+  line-height: 24px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+.findu95au95friend .flex-col {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 22px;
+  min-height: 878px;
+  width: 1184px;
+}
+
+.findu95au95friend .header {
+  align-items: flex-start;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+  gap: 17px;
+  height: auto;
+  justify-content: flex-start;
+  min-height: 134px;
+  padding: 23px 0;
+  width: 1184px;
+}
+
+.findu95au95friend .find-a-friend {
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-l);
+  font-weight: 600;
+  height: 30px;
+  letter-spacing: -0.20px;
+  line-height: 30px;
+  margin-left: 64px;
+  white-space: nowrap;
+}
+
+.findu95au95friend .flex-row {
+  align-items: flex-start;
+  align-self: center;
+  display: flex;
+  min-width: 1056px;
+}
+
+.findu95au95friend .search {
+  align-items: center;
+  background-color: var(--white);
+  border: 1px solid;
+  border-color: var(--bon-jour);
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  height: 40px;
+  padding: 8px 16px 8px 12px;
+  position: relative;
+  width: 405px;
+}
+
+.findu95au95friend .label-2 {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  color: var(--gray);
+  display: -webkit-box;
+  flex: 1;
+  font-weight: 400;
+  line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.findu95au95friend .filter {
+  align-items: center;
+  background-color: var(--white);
+  border: 1px solid;
+  border-color: var(--bon-jour);
+  border-radius: 8px;
+  display: inline-flex;
+  gap: 12px;
+  height: 40px;
+  margin-left: 16px;
+  padding: 8px 16px 8px 12px;
+  position: relative;
+}
+
+.findu95au95friend .filter-1 {
+  height: 24px;
+  position: relative;
+  width: 24px;
+}
+
+.findu95au95friend .label-3 {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  color: var(--gray);
+  display: -webkit-box;
+  font-weight: 400;
+  line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.findu95au95friend .segmented-control {
+  align-items: flex-start;
+  background-color: var(--black-haze);
+  border-radius: 8px;
+  display: inline-flex;
+  margin-left: 381px;
+  padding: 4px;
+  position: relative;
+}
+
+.findu95au95friend .item-1 {
+  height: 36px;
+  margin-bottom: -3.00px;
+  margin-left: -2.00px;
+  margin-top: -1.00px;
+}
+
+.findu95au95friend .item {
+  height: 32px;
+}
+
+.findu95au95friend .list-1 {
+  align-items: flex-start;
+  flex-direction: column;
+  height: 732px;
+  margin-left: 16.0px;
+  width: 1040px;
+}
+
+.findu95au95friend .navbar {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  gap: 20px;
+  height: 56px;
+  position: relative;
+  width: 100%;
+}
+
+.findu95au95friend .navbar-link-place {
+  width: 114px;
+}
+
+.findu95au95friend .navbar-link-fluent-in {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  color: var(--black);
+  display: -webkit-box;
+  font-weight: 500;
+  line-height: 24px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  width: 162px;
+}
+
+.findu95au95friend .navbar-link-learning {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 169px;
+}
+
+.findu95au95friend .navbar-link-level {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 114px;
+}
+
+.findu95au95friend .navbar-link-gender {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 86px;
+}
+
+.findu95au95friend .navbar-link-age {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 84px;
+}
+
+.findu95au95friend .navbar-link-hobby {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  margin-right: -14.00px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 205px;
+}
+
+.findu95au95friend .list-item {
+  align-items: center;
+  align-self: stretch;
+  border-color: var(--bon-jour);
+  border-top-style: solid;
+  border-top-width: 1px;
+  gap: 20px;
+  height: 56px;
+  width: 100%;
+}
+
+.findu95au95friend .navbar-link-minji {
+  width: 116px;
+}
+
+.findu95au95friend .language {
+  width: 161px;
+}
+
+.findu95au95friend .language-1 {
+  width: 158px;
+}
+
+.findu95au95friend .pill {
+  width: 125px;
+}
+
+.findu95au95friend .tag {
+  display: flex;
+  width: 66px;
+}
+
+.findu95au95friend .label {
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.findu95au95friend .pill-1 {
+  width: 96px;
+}
+
+.findu95au95friend .tag-1 {
+  display: inline-flex;
+}
+
+.findu95au95friend .number {
+  color: var(--black);
+  font-weight: 400;
+  line-height: 24px;
+  position: relative;
+  width: 72px;
+}
+
+.findu95au95friend .navbar-link-reading-books {
+  color: var(--black);
+  font-weight: 400;
+  line-height: 24px;
+  position: relative;
+  width: 152px;
+}
+
+.findu95au95friend .navbar-link-mattei {
+  width: 116px;
+}
+
+.findu95au95friend .tag-2 {
+  display: flex;
+  width: 66px;
+}
+
+.findu95au95friend .label-1 {
+  letter-spacing: 0;
+  line-height: 16px;
+  margin-left: -1.50px;
+  margin-right: -1.50px;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.findu95au95friend .tag-3 {
+  display: inline-flex;
+  left: 9px;
+}
+
+.findu95au95friend .navbar-link-watching-films {
+  color: var(--black);
+  font-weight: 400;
+  line-height: 24px;
+  position: relative;
+  width: 152px;
+}
+
+.findu95au95friend .navbar-link-name {
+  width: 116px;
+}
+
+.findu95au95friend .tag-4 {
+  display: flex;
+  width: 66px;
+}
+
+.findu95au95friend .tag-5 {
+  display: inline-flex;
+  left: 9px;
+}
+
+.findu95au95friend .navbar-link-hiking-cooking {
+  color: var(--black);
+  font-weight: 400;
+  line-height: 24px;
+  position: relative;
+  width: 152px;
+}
+
+.findu95au95friend .navbar-link-name-1 {
+  color: var(--black);
+  font-weight: 500;
+  line-height: 24px;
+  position: relative;
+  width: 116px;
+}
+
+.findu95au95friend .tag-6 {
+  display: flex;
+  width: 66px;
+}
+
+.findu95au95friend .tag-7 {
+  display: inline-flex;
+}
+
+.findu95au95friend .navbar-link-sewing-gardening {
+  color: var(--black);
+  font-weight: 400;
+  line-height: 24px;
+  position: relative;
+  width: 152px;
+}
+
+.findu95au95friend .navbar-link-hamza {
+  width: 116px;
+}
+
+.findu95au95friend .tag-8 {
+  display: flex;
+  width: 66px;
+}
+
+.findu95au95friend .tag-9 {
+  display: inline-flex;
+  left: 8px;
+}
+
+.findu95au95friend .navbar-link-listening-to-music {
+  color: var(--black);
+  font-weight: 400;
+  line-height: 24px;
+  position: relative;
+  width: 152px;
+}
+
+.findu95au95friend .ningning {
+  color: var(--black);
+  font-weight: 500;
+  line-height: 24px;
+  position: relative;
+  width: 116px;
+}
+
+.findu95au95friend .tag-10 {
+  display: flex;
+  width: 66px;
+}
+
+.findu95au95friend .tag-11 {
+  display: inline-flex;
+}
+
+.findu95au95friend .drinking {
+  color: var(--black);
+  font-weight: 400;
+  line-height: 24px;
+  position: relative;
+  width: 152px;
+}
+
+.findu95au95friend .place-1 {
+  font-weight: 500;
+  width: 116px;
+}
+
+.findu95au95friend .tag-12 {
+  display: flex;
+  width: 66px;
+}
+
+.findu95au95friend .tag-13 {
+  display: inline-flex;
+}
+
+.findu95au95friend .tag-14 {
+  display: flex;
+  width: 66px;
+}
+
+.findu95au95friend .tag-15 {
+  display: inline-flex;
+  left: 10px;
+}
+
+.findu95au95friend .tag-16 {
+  display: flex;
+  width: 66px;
+}
+
+.findu95au95friend .tag-17 {
+  display: inline-flex;
+}
+
+.findu95au95friend .yoga-walking {
+  color: var(--black);
+  font-weight: 400;
+  line-height: 24px;
+  position: relative;
+  width: 152px;
+}
+
+.findu95au95friend .yoonjin {
+  color: var(--black);
+  font-weight: 500;
+  line-height: 24px;
+  position: relative;
+  width: 116px;
+}
+
+.findu95au95friend .tag-18 {
+  display: flex;
+  width: 66px;
+}
+
+.findu95au95friend .tag-19 {
+  display: inline-flex;
+}
+
+.findu95au95friend .reading-books {
+  color: var(--black);
+  font-weight: 400;
+  line-height: 24px;
+  position: relative;
+  width: 152px;
+}
+
+.findu95au95friend .hyein {
+  color: var(--black);
+  font-weight: 500;
+  line-height: 24px;
+  position: relative;
+  width: 116px;
+}
+
+.findu95au95friend .tag-20 {
+  display: flex;
+  width: 66px;
+}
+
+.findu95au95friend .tag-21 {
+  display: inline-flex;
+}
+
+.findu95au95friend .making-vlog {
+  color: var(--black);
+  font-weight: 400;
+  line-height: 24px;
+  position: relative;
+  width: 152px;
+}
+
+.findu95au95friend .alain {
+  color: var(--black);
+  font-weight: 500;
+  line-height: 24px;
+  position: relative;
+  width: 116px;
+}
+
+.findu95au95friend .tag-22 {
+  display: flex;
+  width: 66px;
+}
+
+.findu95au95friend .tag-23 {
+  display: inline-flex;
+  left: 10px;
+}
+
+.findu95au95friend .place-2 {
+  font-weight: 400;
+  width: 152px;
+}
+
+.findu95au95friend .dot-12 {
+  flex: 1;
+  flex-grow: 1;
+  height: 24px;
+  position: relative;
+}
+
+.findu95au95friend .item-2 {
+  flex: 0 0 auto;
+  position: relative;
+}
+
+.findu95au95friend .label-4 {
+  margin-top: -1.00px;
+  position: relative;
+}
+
+.findu95au95friend .language-2 {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  color: var(--black);
+  display: -webkit-box;
+  font-weight: 500;
+  line-height: 24px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+.findu95au95friend .list-2 {
+  display: flex;
+  position: relative;
+}
+
+.findu95au95friend .name-2 {
+  color: var(--black);
+  font-weight: 500;
+  line-height: 24px;
+  position: relative;
+  width: 116px;
+}
+
+.findu95au95friend .navbar-link {
+  color: var(--black);
+  font-weight: 500;
+  line-height: 24px;
+  position: relative;
+}
+
+.findu95au95friend .pill-2 {
+  height: 28px;
+  position: relative;
+}
+
+.findu95au95friend .place-3 {
+  color: var(--black);
+  line-height: 24px;
+  position: relative;
+}
+
+.findu95au95friend .tag-24 {
+  align-items: center;
+  background-color: var(--white);
+  border: 1px solid;
+  border-color: var(--bon-jour);
+  border-radius: 8px;
+  gap: 8px;
+  justify-content: center;
+  padding: 6px 8px;
+  position: relative;
+}
+
+.findu95au95friend .watching {
+  color: var(--black);
+  font-weight: 400;
+  line-height: 24px;
+  position: relative;
+  width: 152px;
+}

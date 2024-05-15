@@ -1,5 +1,5 @@
 const idDiv = document.getElementById('id');
-const pwDiv = document.getElementById('pw');
+const pwInput = document.getElementById('pw');
 const nameDiv = document.getElementById('name');
 const ageDiv = document.getElementById('age');
 
@@ -15,15 +15,15 @@ idDiv.addEventListener('blur', function() {
     }
 });
 
-pwDiv.addEventListener('focus', function() {
-if (this.textContent === '8~16 characters') {
-    this.textContent = '';
-}
+pwInput.addEventListener('focus', function() {
+    if (this.value === '') {
+        this.placeholder = '';
+    }
 });
 
-pwDiv.addEventListener('blur', function() {
-    if (this.textContent === '') {
-        this.textContent = '8~16 characters';
+pwInput.addEventListener('blur', function() {
+    if (this.value === '') {
+        this.placeholder = '8~16 characters';
     }
 });
 

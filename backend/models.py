@@ -86,8 +86,8 @@ class Chatroom(db.Model):
     __tablename__ = "Chatroom"
     
     chatroom_id = db.Column('chatroom_id', db.Integer, primary_key=True)
-    user1_id = db.Column(db.String(255))
-    user2_id = db.Column(db.String(255))
+    user1_id = db.Column(db.Integer, db.ForeignKey('User.user_id'))
+    user2_id = db.Column(db.Integer, db.ForeignKey('User.user_id'))
     final_message = db.Column(db.String(255))
     final_time = db.Column(db.DateTime, default=datetime.now())
     state = db.Column(db.Boolean) # 선톡 전 => 프로필까지만 False, 왼쪽엔 아직
@@ -104,8 +104,8 @@ class Message(db.Model):
     
     message_id = db.Column('message_id', db.Integer, primary_key=True)
     chatroom_id = db.Column(db.Integer, db.ForeignKey('Chatroom.chatroom_id'))
-    sender_id = db.Column(db.String(255))
-    receiver_id = db.Column(db.String(255))
+    sender_id = db.Column(db.Integer, db.ForeignKey('User.user_id'))
+    receiver_id = db.Column(db.Integer, db.ForeignKey('User.user_id'))
     message = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, default=datetime.now())
 

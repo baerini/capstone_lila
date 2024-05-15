@@ -70,7 +70,7 @@
             
             {% for user in users %}
             <div class="list-item list-2">
-              <div class="navbar-link-minji navbar-link small-text" id="name" style="cursor: pointer;" onclick="submit(this)">{{ user.name }}</div>
+              <div class="navbar-link-minji navbar-link small-text" id="{{ user.user_id }}" style="cursor: pointer;" onclick="submit(this)">{{ user.name }}</div>
               <div class="language language-2 small-text">{{ user.fluent }}</div>
               <div class="language-1 language-2 small-text">{{ user.learning }}</div>
               <div class="pill pill-2">

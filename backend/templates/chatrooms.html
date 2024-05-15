@@ -219,27 +219,19 @@
         data = JSON.parse(data);
         msgDiv = document.getElementById('messages');
         
-        var id = data["id"];
-        
-        var chatroomsDiv = document.getElementById("chatrooms");
-        
-        $.ajax({
-          url: '/get_chatrooms',
-          type: 'GET',
-          success: function(data) {
-            var chatroomElements = chatroomsDiv.children;
-
-            for (var i = 0; i < chatroomElements.length; i++) {
-                var chatroomElement = chatroomElements[i];
-                if (chatroomElement.id == id) {
-                    chatroomsDiv.removeChild(chatroomElement);
-                    break;
-                }
-            }
-            
-            data.forEach(function(chatroom) {
-              if (chatroom.id == id) {
-                chatroomsDiv.insertAdjacentHTML('afterbegin', `
+        //test
+        if(me==data["sender"] || me==data["receiver"]) {
+          
+          //var chatroomElements = chatroomsDiv.children;
+          //chatroomElements.innerHTML = "";
+          $.ajax({
+            url: '/get_chatrooms',
+            type: 'GET',
+            success: function(chatrooms) {
+              var chatroomsDiv = document.getElementById("chatrooms");
+              chatroomsDiv.innerHTML = "";
+              chatrooms.forEach(function(chatroom) {
+                chatroomsDiv.insertAdjacentHTML('beforeend', `
                     <div class="conversation conversation-3" style="cursor: pointer;" id="${chatroom.id}" onclick="enter(this)">
                         <div class="avatar avatar-3">
                             <img class="rectangle-1" src="/static/img/${chatroom.url}" style="cursor: pointer;" alt="Rectangle 1" />
@@ -250,10 +242,10 @@
                         </div>
                     </div>
                 `);
-              }
-            });
-          },
-        });
+              })
+            }
+          });
+        }
       });
     </script>
   </body>

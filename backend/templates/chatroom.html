@@ -123,7 +123,7 @@
             <div id="messages" class="messages">
               <p class="date presetsbody2">Nov 30, 2023, 9:41 AM</p>
               {% for message in messages %}
-                {% if message.sender.name == sender.name %}
+                {% if message.sender.user_id == sender.user_id %}
                   <div class="bubble">
                     <div class="frame-261036 frame">
                       <p class="no-honestly-im-thin small-text">{{ message.message }}</p>
@@ -238,7 +238,7 @@
         
         msgDiv = document.getElementById('messages');
         var id = "{{ id }}";
-        var me = "{{ sender.name }}"
+        var me = "{{ sender.user_id }}"
         
         if (id == data["id"]) {
           if(me == data["sender"]) {
@@ -258,25 +258,19 @@
           }
         }
         
-        var chatroomsDiv = document.getElementById("chatrooms");
-        
-        $.ajax({
-          url: '/get_chatrooms',
-          type: 'GET',
-          success: function(data) {
-            var chatroomElements = chatroomsDiv.children;
-
-            for (var i = 0; i < chatroomElements.length; i++) {
-                var chatroomElement = chatroomElements[i];
-                if (chatroomElement.id == id) {
-                    chatroomsDiv.removeChild(chatroomElement);
-                    break;
-                }
-            }
-            
-            data.forEach(function(chatroom) {
-              if (chatroom.id == id) {
-                chatroomsDiv.insertAdjacentHTML('afterbegin', `
+        //test
+        if(me==data["sender"] || me==data["receiver"]) {
+          
+          //var chatroomElements = chatroomsDiv.children;
+          //chatroomElements.innerHTML = "";
+          $.ajax({
+            url: '/get_chatrooms',
+            type: 'GET',
+            success: function(chatrooms) {
+              var chatroomsDiv = document.getElementById("chatrooms");
+              chatroomsDiv.innerHTML = "";
+              chatrooms.forEach(function(chatroom) {
+                chatroomsDiv.insertAdjacentHTML('beforeend', `
                     <div class="conversation conversation-3" style="cursor: pointer;" id="${chatroom.id}" onclick="enter(this)">
                         <div class="avatar avatar-3">
                             <img class="rectangle-1" src="/static/img/${chatroom.url}" style="cursor: pointer;" alt="Rectangle 1" />
@@ -287,12 +281,10 @@
                         </div>
                     </div>
                 `);
-              }
-            });
-          },
-        });
-        
-        console.log(1);
+              })
+            }
+          });
+        }
       });
 
       function enter(element) {
@@ -305,8 +297,8 @@
         var message = $('#message').text();
         var data = {
           id: "{{ id }}",
-          sender: "{{ sender.name }}",
-          receiver: "{{ receiver.name }}",
+          sender: "{{ sender.user_id }}",
+          receiver: "{{ receiver.user_id }}",
           message: message
         };
         socket.send(JSON.stringify(data));
@@ -318,10 +310,6 @@
               sendMessage();
           }
       }
-      
-      var sender = "{{ sender.name }}"
-      var receiver = "{{ receiver.name }}"
-      console.log(sender, receiver);
       
     </script>
     <script src="{{ url_for('static', filename='js/chatroom.js') }}"></script>

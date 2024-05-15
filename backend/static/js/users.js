@@ -1,8 +1,8 @@
 function submit(element) {
-    var name = element.innerHTML;
+    var user_id = element.id;
 
     var data = {
-        name: name,
+        id: user_id,
     };
 
     fetch('/create_chatroom', {

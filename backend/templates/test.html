@@ -1,20 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>라디오 버튼 예제</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>음성 전송</title>
 </head>
 <body>
+    <h1>음성 전송</h1>
+    <button id="start-stream">스트리밍 시작</button>
+    <button id="stop-stream" disabled>스트리밍 중지</button>
 
-<form>
-    <input type="radio" id="option1" name="options" value="option1">
-    <label for="option1">옵션 1</label><br>
-    <input type="radio" id="option2" name="options" value="option2">
-    <label for="option2">옵션 2</label><br>
-    <input type="radio" id="option3" name="options" value="option3">
-    <label for="option3">옵션 3</label><br>
-</form>
+    <script>
+        const constraints = {
+            audio: true,
+            video: false
+        };
 
+        let stream;
+        let socket;
+
+        document.getElementById('start-stream').addEventListener('click', startStreaming);
+        document.getElementById('stop-stream').addEventListener('click', stopStreaming);
+
+        function startStreaming() {
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then(function (userMediaStream) {
+                    stream = userMediaStream;
+                    socket = new WebSocket('ws://localhost:5000/stream');
+
+                    socket.onopen = function () {
+                        console.log('WebSocket 연결 성공');
+                    };
+
+                    socket.onerror = function (error) {
+                        console.error('WebSocket 오류:', error);
+                    };
+
+                    socket.onclose = function () {
+                        console.log('WebSocket 연결 종료');
+                    };
+
+                    const audioContext = new AudioContext();
+                    const audioInput = audioContext.createMediaStreamSource(stream);
+                    const bufferSize = 2048;
+                    const audioScriptProcessor = audioContext.createScriptProcessor(bufferSize, 1, 1);
+
+                    audioScriptProcessor.onaudioprocess = function (e) {
+                        const inputBuffer = e.inputBuffer.getChannelData(0);
+                        socket.send(inputBuffer);
+                    };
+
+                    audioInput.connect(audioScriptProcessor);
+                    audioScriptProcessor.connect(audioContext.destination);
+
+                    document.getElementById('start-stream').disabled = true;
+                    document.getElementById('stop-stream').disabled = false;
+                })
+                .catch(function (err) {
+                    console.error('오디오 스트림을 가져오는 중 오류 발생:', err);
+                });
+        }
+
+        function stopStreaming() {
+            if (stream) {
+                stream.getTracks().forEach(track => {
+                    track.stop();
+                });
+            }
+
+            if (socket) {
+                socket.close();
+            }
+
+            document.getElementById('start-stream').disabled = false;
+            document.getElementById('stop-stream').disabled = true;
+        }
+    </script>
 </body>
 </html>

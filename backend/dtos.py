@@ -1,7 +1,8 @@
 from models import *
 
 class UserDto:
-    def __init__(self, name, age, gender, email, job, hobby, fluent, learning, level, url, success, bio):
+    def __init__(self, user_id, name, age, gender, email, job, hobby, fluent, learning, level, url, success, bio):
+        self.user_id = user_id
         self.name = name
         self.age = age
         self.gender = gender
@@ -18,6 +19,7 @@ class UserDto:
         
 def user_to_dto(user: User):
     return UserDto (
+        user_id=user.user_id,
         name=user.name.decode(),
         age=user.age,
         gender=user.gender.decode(),

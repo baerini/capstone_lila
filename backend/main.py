@@ -1,10 +1,9 @@
 from flask import Flask, request, make_response, jsonify, render_template, redirect, url_for
 from flask_jwt_extended import *
 from flask_socketio import SocketIO, emit
-from sqlalchemy import asc
+from sqlalchemy import desc
 from sqlalchemy.exc import NoResultFound
 import json
-# from flask_sqlalchemy import SQLAlchemy
 
 from config import *
 app = Flask(__name__)
@@ -137,22 +136,21 @@ def create_chatroom():
     current_user_id = get_jwt_identity()
     data = request.get_json()
         
-    username = data['name']
+    user_id = data['id']
     user1 = User.query.filter_by(id=current_user_id).first()
-    user2 = User.query.filter_by(name=username).first() # 수정필요
+    user2 = User.query.filter_by(user_id=user_id).first() # 수정필요
     
-    print(user1, user2)
     chatroom = Chatroom.query.filter(
-        (Chatroom.user1_id == user1.id) & (Chatroom.user2_id == user2.id) |
-        (Chatroom.user1_id == user2.id) & (Chatroom.user2_id == user1.id)
+        (Chatroom.user1_id == user1.user_id) & (Chatroom.user2_id == user2.user_id) |
+        (Chatroom.user1_id == user2.user_id) & (Chatroom.user2_id == user1.user_id)
     ).first()
     
     if chatroom:
         return jsonify({'id': chatroom.chatroom_id})
     else:
         new_chatroom = Chatroom(
-            user1_id=user1.id.decode(),
-            user2_id=user2.id.decode(),
+            user1_id=user1.user_id,
+            user2_id=user2.user_id,
             state = False
         )
         db.session.add(new_chatroom)
@@ -167,17 +165,17 @@ def chatrooms():
     user = User.query.filter_by(id=current_user_id).first()
     
     chatrooms = Chatroom.query.filter(
-        (Chatroom.user1_id == user.id) | (Chatroom.user2_id == user.id)
-    ).order_by(asc(Chatroom.final_time)).all()
+        (Chatroom.user1_id == user.user_id) | (Chatroom.user2_id == user.user_id)
+    ).order_by(desc(Chatroom.final_time)).all()
     
     chatroom_dtos = []
     for chatroom in chatrooms:
         if chatroom.state:
             receiver = None
-            if user.id == chatroom.user1_id:
-                receiver = User.query.filter_by(id=chatroom.user2_id).first()
+            if user.user_id == chatroom.user1_id:
+                receiver = User.query.filter_by(user_id=chatroom.user2_id).first()
             else:
-                receiver = User.query.filter_by(id=chatroom.user1_id).first()
+                receiver = User.query.filter_by(user_id=chatroom.user1_id).first()
             
             chatroom_dtos.append(
                 {
@@ -187,7 +185,7 @@ def chatrooms():
                     "final_time": chatroom.final_time
                 }
             )
-            print(chatroom_dtos)
+    print(chatroom_dtos)
             
     if current_user_id:
         return render_template('chatrooms.html', chatrooms=chatroom_dtos, sender=user_to_dto(user))
@@ -201,17 +199,17 @@ def get_chatrooms():
     user = User.query.filter_by(id=current_user_id).first()
     
     chatrooms = Chatroom.query.filter(
-        (Chatroom.user1_id == user.id) | (Chatroom.user2_id == user.id)
-    ).all()
+        (Chatroom.user1_id == user.user_id) | (Chatroom.user2_id == user.user_id)
+    ).order_by(desc(Chatroom.final_time)).all()
     
     chatroom_dtos = []
     for chatroom in chatrooms:
         if chatroom.state:
             receiver = None
-            if user.id == chatroom.user1_id:
-                receiver = User.query.filter_by(id=chatroom.user2_id).first()
+            if user.user_id == chatroom.user1_id:
+                receiver = User.query.filter_by(user_id=chatroom.user2_id).first()
             else:
-                receiver = User.query.filter_by(id=chatroom.user1_id).first()
+                receiver = User.query.filter_by(user_id=chatroom.user1_id).first()
             
             receiver = user_to_dto(receiver)
             chatroom_dtos.append(
@@ -219,11 +217,14 @@ def get_chatrooms():
                     "id": chatroom.chatroom_id,
                     "name": receiver.name, 
                     "url": receiver.url,
+                    "sender": user.user_id,
+                    "receiver": receiver.user_id,
                     "final_message": chatroom.final_message.decode(),
                     "final_time": chatroom.final_time
                 }
             )
-
+    print(chatroom_dtos)
+    
     return chatroom_dtos
     
 @app.route('/chatroom/<id>', methods=['GET', 'POST'])
@@ -234,17 +235,17 @@ def chatroom(id):
     
     ## 나의 채팅목록
     chatrooms = Chatroom.query.filter(
-        (Chatroom.user1_id == user.id) | (Chatroom.user2_id == user.id)
-    ).all()
+        (Chatroom.user1_id == user.user_id) | (Chatroom.user2_id == user.user_id)
+    ).order_by(desc(Chatroom.final_time)).all()
     
     chatroom_dtos = []
     for chatroom in chatrooms:
         if chatroom.state:
             receiver = None
-            if user.id == chatroom.user1_id:
-                receiver = User.query.filter_by(id=chatroom.user2_id).first()
+            if user.user_id == chatroom.user1_id:
+                receiver = User.query.filter_by(user_id=chatroom.user2_id).first()
             else:
-                receiver = User.query.filter_by(id=chatroom.user1_id).first()
+                receiver = User.query.filter_by(user_id=chatroom.user1_id).first()
             
             chatroom_dtos.append(
                 {
@@ -254,24 +255,25 @@ def chatroom(id):
                     "final_time": chatroom.final_time
                 }
             )
+            print(user_to_dto(receiver).user_id)
             
     ## 선택된 채팅방 메시지 목록
     chatroom = Chatroom.query.filter_by(chatroom_id=id).first()
     
     ## 상대방
     user2 = None
-    if chatroom.user1_id == user.id:
-        user2 = User.query.filter_by(id=chatroom.user2_id.decode()).first()
+    if chatroom.user1_id == user.user_id:
+        user2 = User.query.filter_by(user_id=chatroom.user2_id).first()
     else:
-        user2 = User.query.filter_by(id=chatroom.user1_id.decode()).first()
+        user2 = User.query.filter_by(user_id=chatroom.user1_id).first()
         
     messages = Message.query.filter_by(chatroom_id=id).all()
     receiver = None
     
     message_dtos = []
     for message in messages:
-        sender = User.query.filter_by(id=message.sender_id).first()
-        receiver = User.query.filter_by(id=message.receiver_id).first()
+        sender = User.query.filter_by(user_id=message.sender_id).first()
+        receiver = User.query.filter_by(user_id=message.receiver_id).first()
         message_dtos.append(
                 {
                     "sender": user_to_dto(sender),
@@ -284,18 +286,22 @@ def chatroom(id):
     return render_template('chatroom.html', id=id, chatrooms=chatroom_dtos, sender=user_to_dto(user), receiver=user_to_dto(user2), messages=message_dtos)
 
 @socketio.on('message')
+@jwt_required(optional=True)
 def handle_message(data):
+    current_user_id = get_jwt_identity()
+    print(current_user_id)
+    
     d = json.loads(data)
     
     chatroom_id = d.get('id')
-    sender_name = d.get('sender')
-    receiver_name = d.get('receiver')
+    sender_user_id = d.get('sender')
+    receiver_user_id = d.get('receiver')
     message = d.get('message')
     
     print(d)
     chatroom = Chatroom.query.filter_by(chatroom_id=chatroom_id).first()
-    sender = User.query.filter_by(name=sender_name).first()
-    receiver = User.query.filter_by(name=receiver_name).first()
+    sender = User.query.filter_by(user_id=sender_user_id).first()
+    receiver = User.query.filter_by(user_id=receiver_user_id).first()
     if not chatroom.state:
         chatroom.state = True
     chatroom.final_message = message
@@ -303,12 +309,11 @@ def handle_message(data):
     
     new_message = Message(
         chatroom_id=chatroom.chatroom_id,
-        sender_id=sender.id.decode(),
-        receiver_id=receiver.id.decode(),
+        sender_id=sender.user_id,
+        receiver_id=receiver.user_id,
         message=message,
         created_at=datetime.now(), 
     )
-    print(new_message)
     db.session.add(new_message)
     db.session.commit()
     

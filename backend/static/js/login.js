@@ -1,5 +1,5 @@
 const idDiv = document.getElementById('id');
-const pwDiv = document.getElementById('pw');
+const pwInput = document.getElementById('pw');
 
 idDiv.addEventListener('focus', function() {
     if (this.textContent === 'user id') {
@@ -13,21 +13,22 @@ idDiv.addEventListener('blur', function() {
     }
 });
 
-pwDiv.addEventListener('focus', function() {
-if (this.textContent === 'password') {
-    this.textContent = '';
-}
-});
-
-pwDiv.addEventListener('blur', function() {
-    if (this.textContent === '') {
-        this.textContent = 'password';
+pwInput.addEventListener('focus', function() {
+    if (this.value === '') {
+        this.placeholder = '';
     }
 });
 
+pwInput.addEventListener('blur', function() {
+    if (this.value === '') {
+        this.placeholder = 'password';
+    }
+});
+
+
 function submit() {
     var id = document.getElementById('id').innerText;
-    var pw = document.getElementById('pw').innerText;
+    var pw = document.getElementById('pw').value;
 
     var data = {
         id: id,

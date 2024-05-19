@@ -249,12 +249,21 @@
                     </div>
                 </div>`;
           } else {
-            msgDiv.innerHTML += `
+            if(data.translation != null && data.translation != undefined) {
+              msgDiv.innerHTML += `
+                <div class="bubbles">
+                    <div class="frame-26103 frame">
+                        <p class="name-7 name-10 small-text">${data.message}<br>${data.translation}</p>
+                    </div>
+                </div>`;
+            } else {
+              msgDiv.innerHTML += `
                 <div class="bubbles">
                     <div class="frame-26103 frame">
                         <p class="name-7 name-10 small-text">${data.message}</p>
                     </div>
                 </div>`;
+            }
           }
         }
         

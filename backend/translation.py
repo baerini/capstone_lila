@@ -21,13 +21,17 @@ supported_language = {
     'japanese' : 'ja'
 }
 
-def text_translate(origin: str, country: str) -> str:
+def translate(origin: str, country: str):
     translator = Translator()
+    print(origin+"-->>"+country)
+    result = None
     try:
-        result = translator.translate(origin, supported_language[country])
-        return result.text
+        result = translator.translate(origin, supported_language[country]).text 
+        print(result)
+        return result
     except:
-        return ""
+        print(result)
+        return result
     
 # print(text_translate('hello', 'korean'))
 # print(text_translate('你好', 'korean'))
@@ -36,16 +40,3 @@ def text_translate(origin: str, country: str) -> str:
 # print(text_translate('Bonjour', 'korean'))
 # print(text_translate('안녕하세요', 'korean'))
 # print(text_translate('こんにちは', 'korean'))
-
-"""
-1. db에서 꺼내온 메시지들
-상대방이 보낸 것들을 나의 fluent 조회해서 번역하고 서버에서 concat하고 보내주기.
-
-2. 소켓 통해서 들어오느것들
-프론트에서 concat해야함
-
-내가 보냄.
-
-
-상대방이 보냄.
-"""

@@ -1,4 +1,4 @@
-from flask import Flask, request, make_response, jsonify, render_template, redirect, url_for
+from flask import Flask, request, make_response, jsonify, render_template, redirect
 from flask_jwt_extended import *
 from flask_socketio import SocketIO, emit
 from sqlalchemy import desc
@@ -11,6 +11,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
 
 from models import *
 from dtos import *
+from translation import *
 
 socketio = SocketIO(app)
 app.config['JWT_SECRET_KEY'] = "super-secret"
@@ -104,15 +105,17 @@ def login_proc():
         user_pw = data['pw']
         
         try:
-            db.session.query(User).filter(User.id==user_id, User.pw==user_pw).first() 
-            access_token = create_access_token(identity=user_id, expires_delta=False)
-            response = make_response(redirect('/'))
-            set_access_cookies(response, access_token)
-            
-            return response
+            user = db.session.query(User).filter(User.id==user_id, User.pw==user_pw).first()
+            if user:
+                access_token = create_access_token(identity=user_id, expires_delta=False)
+                response = make_response(redirect('/'))
+                set_access_cookies(response, access_token)
+                return response
+            else:
+                raise NoResultFound
         
         except NoResultFound:
-            return jsonify(result="Invalid Params") # red screen
+            return jsonify(result="Invalid Params"), 400
 
 @app.route('/users', methods=['GET'])
 @jwt_required(optional=True)
@@ -185,7 +188,6 @@ def chatrooms():
                     "final_time": chatroom.final_time
                 }
             )
-    print(chatroom_dtos)
             
     if current_user_id:
         return render_template('chatrooms.html', chatrooms=chatroom_dtos, sender=user_to_dto(user))
@@ -223,7 +225,6 @@ def get_chatrooms():
                     "final_time": chatroom.final_time
                 }
             )
-    print(chatroom_dtos)
     
     return chatroom_dtos
     
@@ -255,12 +256,9 @@ def chatroom(id):
                     "final_time": chatroom.final_time
                 }
             )
-            print(user_to_dto(receiver).user_id)
             
-    ## 선택된 채팅방 메시지 목록
     chatroom = Chatroom.query.filter_by(chatroom_id=id).first()
     
-    ## 상대방
     user2 = None
     if chatroom.user1_id == user.user_id:
         user2 = User.query.filter_by(user_id=chatroom.user2_id).first()
@@ -289,7 +287,6 @@ def chatroom(id):
 @jwt_required(optional=True)
 def handle_message(data):
     current_user_id = get_jwt_identity()
-    print(current_user_id)
     
     d = json.loads(data)
     
@@ -298,10 +295,10 @@ def handle_message(data):
     receiver_user_id = d.get('receiver')
     message = d.get('message')
     
-    print(d)
     chatroom = Chatroom.query.filter_by(chatroom_id=chatroom_id).first()
     sender = User.query.filter_by(user_id=sender_user_id).first()
     receiver = User.query.filter_by(user_id=receiver_user_id).first()
+    
     if not chatroom.state:
         chatroom.state = True
     chatroom.final_message = message
@@ -317,7 +314,8 @@ def handle_message(data):
     db.session.add(new_message)
     db.session.commit()
     
-    emit('message', data, broadcast=True)
+    d['translation'] = translate(message, receiver.fluent.decode())
+    emit('message', json.dumps(d), broadcast=True)
 
 @app.route('/profile', methods=['GET', 'POST'])
 @jwt_required(optional=True)

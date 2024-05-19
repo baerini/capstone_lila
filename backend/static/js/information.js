@@ -64,7 +64,7 @@ function genderChangeStyle(button) {
 
 function submit() {
     var id = document.getElementById('id').innerText;
-    var pw = document.getElementById('pw').innerText;
+    var pw = document.getElementById('pw').value;
     var name = document.getElementById('name').innerText;
     var age = document.getElementById('age').innerText;
     var gender = document.querySelector('.gender-active').innerHTML;

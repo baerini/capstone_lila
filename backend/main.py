@@ -13,6 +13,15 @@ from models import *
 from dtos import *
 from translation import *
 
+###
+import csv
+import pandas as pd
+# from db.database import *
+# from model.introduce_sim import intro_recommend, collaborative_recommend
+from model.introduce_sim import *
+# from model.collaborative import *
+###
+    
 socketio = SocketIO(app)
 app.config['JWT_SECRET_KEY'] = "super-secret"
 app.config['JWT_TOKEN_LOCATION'] = ['cookies']
@@ -123,6 +132,61 @@ def users():
     current_user_id = get_jwt_identity()
     user_dtos = []
     users = User.query.all()
+
+    # db to csv
+    file_path = './test.csv'
+    with open(file_path, mode='w', newline='', encoding='utf-8') as file:
+        writer = csv.writer(file)
+        # User_ID,이름,성별,연령대,자기 소개,모국어,외국어,외국어 수준
+        writer.writerow(['User_ID', '이름', '성별', '연령대', '자기 소개', '모국어', '외국어', '외국어 수준'])
+        # Write the user data
+        def convert_age(age):
+            if isinstance(age, int):
+                return f"{age // 10 * 10}대"
+            return age
+        
+        def convert_gender(gender):
+            if gender == "Male":
+                return "남"
+            elif gender == "Female":
+                return "여"
+            return gender
+        
+        def convert_level(level):
+            if level == 1:
+                return "하"
+            elif level == 2:
+                return "중"
+            elif level == 3:
+                return "상"
+            return level
+            
+        for user in users:
+            user_dto = user_to_dto(user)
+            
+            writer.writerow([
+                user_dto.user_id,
+                user_dto.name,
+                convert_gender(user_dto.gender),
+                convert_age(user_dto.age),
+                translate_bio(user_dto.bio),
+                user_dto.fluent,
+                user_dto.learning,
+                convert_level(user_dto.level),
+            ])
+    
+    # introduce_sim
+    train = pd.read_csv('./test.csv')
+    print(intro_recommend(1, train, None, '20대', None))
+    
+    
+    
+    
+    
+    
+    
+    
+    
     for user in users:
         if (user.id.decode() == current_user_id) or not user.success:
             continue

@@ -177,7 +177,7 @@ def users():
     
     # introduce_sim
     train = pd.read_csv('./test.csv')
-    print(intro_recommend(1, train, None, '20대', None))
+    print(intro_recommend(1, train, None, None, None))
     
     
     

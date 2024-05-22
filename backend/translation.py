@@ -27,10 +27,17 @@ def translate(origin: str, country: str):
     result = None
     try:
         result = translator.translate(origin, supported_language[country]).text 
-        print(result)
         return result
     except:
-        print(result)
+        return result
+    
+def translate_bio(origin: str):
+    translator = Translator()
+    result = None
+    try:
+        result = translator.translate(origin, supported_language['korean']).text 
+        return result
+    except:
         return result
     
 # print(text_translate('hello', 'korean'))

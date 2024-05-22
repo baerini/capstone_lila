@@ -21,10 +21,14 @@ def match_lang(user_id, train):
     return filtered_users
 
 def match_gender(user_id, train, gender):
+    if not gender:
+        return train
     filtered_df = train[(train['성별'] == gender) | (train['User_ID'] == user_id)]
     return filtered_df
 
 def match_level(user_id, train, level):
+    if not level:
+        return train
     filtered_df = train[(train['외국어 수준'] == level) | (train['User_ID'] == user_id)]
     return filtered_df
 
@@ -42,9 +46,9 @@ def stopwords(path):
     stopwords = [tokenizer.morphs(word)[0] for word in stopwords]
     return stopwords
 
-def cosine_sim(train, n):
+def cosine_sim(train, n, gender, level):
     #유저 아이디 n과 언어 매칭되는 유저들 추출
-    sample = content_base(n, train, '남', '상')
+    sample = content_base(n, train, gender, level)
     introduce = list(sample['자기 소개'])
     #자기 소개 임베딩
     tf = TfidfVectorizer(stop_words=stopwords(path), tokenizer=tokenize_ko)
@@ -55,15 +59,15 @@ def cosine_sim(train, n):
     return cosine_sim
 
 #자기소개 기반 추천
-def get_recommendation(user_id):
-    sample = content_base(user_id, train, '남', '상')
+def intro_recommend(user_id, gender, level):
+    sample = content_base(user_id, train, gender, level)
     rec_df = sample.set_index('User_ID')
     idx = rec_df.index.get_loc(user_id)
-    sim_scores = list(enumerate(cosine_sim(train, user_id)[idx]))
+    sim_scores = list(enumerate(cosine_sim(train, user_id, gender, level)[idx]))
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
-    sim_scores = sim_scores[1:10]
+    sim_scores = sim_scores[1:21]
     user_indices = [i[0] for i in sim_scores]
     return sample.iloc[user_indices]
 
-print(train[train['User_ID'] == 500])
-print(get_recommendation(500))
+# print(train[train['User_ID'] == 30000])
+# print(intro_recommend(30000, '남', '상'))

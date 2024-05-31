@@ -11,16 +11,15 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/profile.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styleguide.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/globals.css') }}">
-    <!-- <link rel="stylesheet" type="text/css" href="css/profile.css" /> -->
-    <!-- <link rel="stylesheet" type="text/css" href="css/styleguide.css" /> -->
-    <!-- <link rel="stylesheet" type="text/css" href="css/globals.css" /> -->
   </head>
   <body style="margin: 0; background: #ffffff">
     <input type="hidden" id="anPageName" name="page" value="profile" />
     <div class="container-center-horizontal">
       <div class="profile screen">
-        <img class="contact-bg-1" src="{{ url_for('static', filename='img/contact-bg-1.png') }}" alt="contact-bg 1" />
-        <!-- <img class="contact-bg-1" src="img/contact-bg-1.png" alt="contact-bg 1" /> -->
+        <div class="image-container">
+          <img class="contact-bg-1" src="{{ url_for('static', filename='img/contact-bg-1.png') }}" alt="contact-bg 1" />
+          <div class="footer-text"><br>Li.La Linking Languages Together</div>
+        </div>
         <div class="flex-col">
           <div class="overlap-group small-text">
             <div class="content">
@@ -30,22 +29,16 @@
                 </h1>
               </div>
               <div class="group">
-                <div class="user-id small-text">My profession is</div>
+                <div class="user-id small-text">My profession is</div><br><br>
                 <div class="field"><div id="profession" contenteditable="true" class="label body-text">e.g. student, accountant</div></div>
               </div>
               <div class="group">
-                <div class="password small-text">My hobby is</div>
+                <div class="password small-text">My hobby is</div><br><br>
                 <div class="field"><div id="hobby" contenteditable="true" class="label body-text">e.g. hiking, painting</div></div>
               </div>
             </div>
-            <!-- <img class="gender" src="{{ url_for('static', filename='img/gender-1.png') }}" alt="level" /> -->
-            <!-- <img class="gender" src="img/gender-1.png" alt="gender" /> -->
             <div class="i-am-fluent-in">I am fluent in</div>
-            <div class="button-container">
-              <button class="fluent-button" onclick="levelChangeStyle(this)">beginner</button>
-              <button class="fluent-button" onclick="levelChangeStyle(this)">not very fluent</button>
-              <button class="fluent-button" onclick="levelChangeStyle(this)">already fluent</button>
-            </div>
+            
             <div class="group-7">
               <button class="pill-2 pill-12 fluent" onclick="fluentChangeStyle(this)">english</button>
               <button class="pill pill-12 fluent" onclick="fluentChangeStyle(this)">chinese</button>
@@ -56,7 +49,6 @@
               <button class="pill-6 pill-12 fluent" onclick="fluentChangeStyle(this)">japanese</button>
             </div>
             <div class="i-hope-to-learn">I hope to learn</div>
-            <div class="and-currently-i-am">and currently I am</div>
             <div class="group-6">
               <button class="pill-2 pill-12 learning" onclick="learningChangeStyle(this)">english</button>
               <button class="pill pill-12 learning" onclick="learningChangeStyle(this)">chinese</button>
@@ -65,6 +57,12 @@
               <button class="pill-4 pill-12 learning" onclick="learningChangeStyle(this)">french</button>
               <button class="pill-5 pill-12 learning" onclick="learningChangeStyle(this)">korean</button>
               <button class="pill-6 pill-12 learning" onclick="learningChangeStyle(this)">japanese</button>
+            </div>
+            <div class="and-currently-i-am">and currently I am</div>
+            <div class="button-container">
+              <button class="fluent-button" onclick="levelChangeStyle(this)">beginner</button>
+              <button class="fluent-button" onclick="levelChangeStyle(this)">not very fluent</button>
+              <button class="fluent-button" onclick="levelChangeStyle(this)">already fluent</button>
             </div>
           </div>
           <div class="button button-2" onclick="submit()" style="cursor: pointer;"><div class="continue valign-text-middle body-text">Continue</div></div>

@@ -1,17 +1,17 @@
-const idDiv = document.getElementById('id');
+const idInput = document.getElementById('id');
 const pwInput = document.getElementById('pw');
-const nameDiv = document.getElementById('name');
-const ageDiv = document.getElementById('age');
+const nameInput = document.getElementById('name');
+const ageInput = document.getElementById('age');
 
-idDiv.addEventListener('focus', function() {
-    if (this.textContent === '4~16 characters') {
-        this.textContent = '';
+idInput.addEventListener('focus', function() {
+    if (this.value === '4~16 characters') {
+        this.value = '';
     }
 });
 
-idDiv.addEventListener('blur', function() {
-    if (this.textContent === '') {
-        this.textContent = '4~16 characters';
+idInput.addEventListener('blur', function() {
+    if (this.value === '') {
+        this.value = '4~16 characters';
     }
 });
 
@@ -27,27 +27,27 @@ pwInput.addEventListener('blur', function() {
     }
 });
 
-nameDiv.addEventListener('focus', function() {
-if (this.textContent === 'name') {
-    this.textContent = '';
-}
-});
-
-nameDiv.addEventListener('blur', function() {
-    if (this.textContent === '') {
-        this.textContent = 'name';
+nameInput.addEventListener('focus', function() {
+    if (this.value === 'name') {
+        this.value = '';
     }
 });
 
-ageDiv.addEventListener('focus', function() {
-if (this.textContent === 'age') {
-    this.textContent = '';
-}
+nameInput.addEventListener('blur', function() {
+    if (this.value === '') {
+        this.value = 'name';
+    }
 });
 
-ageDiv.addEventListener('blur', function() {
-    if (this.textContent === '') {
-        this.textContent = 'age';
+ageInput.addEventListener('focus', function() {
+    if (this.value === 'age') {
+        this.value = '';
+    }
+});
+
+ageInput.addEventListener('blur', function() {
+    if (this.value === '') {
+        this.value = 'age';
     }
 });
 
@@ -62,20 +62,51 @@ function genderChangeStyle(button) {
     console.log(activeElement.innerHTML);
 }
 
-function submit() {
-    var id = document.getElementById('id').innerText;
-    var pw = document.getElementById('pw').value;
-    var name = document.getElementById('name').innerText;
-    var age = document.getElementById('age').innerText;
-    var gender = document.querySelector('.gender-active').innerHTML;
+function handleSignupSubmit() {
+    var id = idInput.value;
+    var pw = pwInput.value;
+    var name = nameInput.value;
+    var age = ageInput.value;
+    var genderElement = document.querySelector('.gender-active');
+    var gender = genderElement ? genderElement.innerHTML : '';
 
-    var data = {
-        id: id,
-        pw: pw,
-        name: name,
-        age: age,
-        gender: gender
-    };
+    // 모든 입력이 비어있는지 확인
+    if (!id || !pw || !name || !age || !genderElement) {
+        alert('You forgot something!');
+        return;
+    }
+
+    // 모든 오류 메시지를 담을 배열
+    let errors = [];
+
+    // 유저 아이디 검사
+    if (!/^[a-zA-Z0-9]{4,16}$/.test(id)) {
+        errors.push('You need to fulfill the user id condition.');
+    }
+
+    // 비밀번호 검사
+    if (!/^[a-zA-Z0-9]{8,16}$/.test(pw)) {
+        errors.push('You need to fulfill the password condition.');
+    }
+
+    // 이름 검사
+    if (!/^[a-zA-Z]+$/.test(name)) {
+        errors.push('Your name should only be in English.');
+    }
+
+    // 나이 검사
+    if (!/^\d+$/.test(age)) {
+        errors.push('Your age should only be in numbers.');
+    }
+
+    // 만약 오류가 있으면 모든 오류 메시지를 alert
+    if (errors.length > 0) {
+        alert(errors.join('\n'));
+        return;
+    }
+
+    // 여기에서 회원가입 로직을 실행합니다.
+    var data = { id: id, pw: pw, name: name, age: age, gender: gender };
 
     fetch('/signup', {
         method: 'POST',
@@ -86,10 +117,8 @@ function submit() {
     })
     .then(response => {
         if (response.ok) {
-            console.log(response)
             id = encodeURIComponent(id);
-            url = `/signup_2/` + id;
-            window.location.href=url;
+            window.location.href = `/signup_2/` + id;
         } else {
             console.error('Error sending data');
         }
@@ -98,4 +127,3 @@ function submit() {
         console.error('Error:', error);
     });
 }
-

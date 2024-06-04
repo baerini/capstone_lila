@@ -2,8 +2,6 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
-    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
     <meta name="viewport" content="width=1440, maximum-scale=1.0" />
     <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
     <meta name="og:type" content="website" />
@@ -11,24 +9,20 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/information.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styleguide.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/globals.css') }}">
-    <!-- <link rel="stylesheet" type="text/css" href="css/information.css" />
-    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
-    <link rel="stylesheet" type="text/css" href="css/globals.css" /> -->
   </head>
   <body style="margin: 0; background: #ffffff">
     <input type="hidden" id="anPageName" name="page" value="information" />
     <div class="container-center-horizontal">
       <div class="information screen">
         <img class="contact-bg-1" src="{{ url_for('static', filename='img/contact-bg-1.png') }}" alt="contact-bg 1" />
-        <!-- <img class="contact-bg-1" src="img/contact-bg-1.png" alt="contact-bg 1" /> -->
         <div class="flex-col">
           <div class="content">
-            <div class="copy"><h1 class="title inter-semi-bold-white-24px">Welcome!</h1></div>
+            <div class="copy"><h1 class="title inter-semi-bold-white-24px">Welcome to LiLa!</h1></div>
             <div class="group">
               <div class="user-id small-text">user id</div>
               <div class="field field-2">
-                <div id="id" contenteditable="true" class="label body-text">4~16 characters</div>
-              </div>
+                <input type="text" id="id" class="label body-text" placeholder="4~16 characters">
+              </div>            
             </div>
             <div class="group">
               <div class="password small-text">password</div>
@@ -37,7 +31,7 @@
             <div class="group-3">
               <div class="flex-col-1 small-text">
                 <div class="place">name</div>
-                <div class="field-1 field-2"><div id="name" contenteditable="true" class="label body-text">name</div></div>
+                <div class="field-1 field-2"><input type="text" id="name" class="label body-text" placeholder="name"></div>
                 <div class="gender">gender</div>
               </div>
             </div>
@@ -47,10 +41,10 @@
             </div>
             <div class="group">
               <div class="age small-text">age</div>
-              <div class="field field-2"><div id="age" contenteditable="true" class="label body-text">age</div></div>
+              <div class="field field-2"><input type="text" id="age" class="label body-text" placeholder="age"></div>
             </div>
           </div>
-          <div class="button" style="cursor: pointer;" onclick="submit()"><div class="continue valign-text-middle body-text">Continue</div></div>
+          <div class="button" style="cursor: pointer;" onclick="handleSignupSubmit()"><div class="continue valign-text-middle body-text">Continue</div></div>
         </div>
       </div>
     </div>

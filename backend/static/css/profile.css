@@ -5,24 +5,46 @@
   background-color: var(--white);
   display: flex;
   gap: 97px;
-  height: 900px;
+  height: auto; 
   min-width: 1440px;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-bg-1 {
+  max-width: 100%;
+}
+
+.footer-text {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 24px; 
+  color: var(--black);
+  font-family: 'Arial', sans-serif; 
+  font-weight: bold; 
+  text-transform: uppercase; 
+  letter-spacing: 2px; 
 }
 
 .profile .flex-col {
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-top: 88px;
-  min-height: 771px;
+  margin-top: 0; 
   width: 567px;
 }
 
 .profile .overlap-group {
   border-radius: 20px;
-  height: 623px;
   position: relative;
   width: 567px;
+  padding: 20px; 
+  background-color: var(--black); 
+  margin-top: 0; 
 }
 
 .profile .content {
@@ -32,19 +54,15 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  height: 623px;
-  left: 0;
-  padding: 30px 0px;
-  position: absolute;
-  top: 0;
-  width: 567px;
+  padding: 30px 20px;
+  width: 100%;
+  height: auto; 
 }
 
 .profile .welcome {
+  color: var(--white);
   letter-spacing: -0.24px;
   line-height: 36px;
-  margin-top: -1.00px;
-  position: relative;
   text-align: center;
   width: fit-content;
 }
@@ -52,386 +70,153 @@
 .profile .field {
   align-items: center;
   background-color: var(--white);
-  border: 1px solid;
-  border-color: var(--bon-jour);
+  border: 1px solid var(--bon-jour);
   border-radius: 8px;
   display: flex;
   gap: 16px;
   height: 40px;
-  left: 0;
   padding: 8px 16px;
-  position: absolute;
-  top: 32px;
-  width: 400px;
+  width: 100%;
+  cursor: text;
 }
 
 .profile .label {
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
   color: var(--gray);
   display: -webkit-box;
   flex: 1;
   font-weight: 500;
   line-height: 30px;
-  margin-bottom: -2.00px;
-  margin-top: -4.00px;
   overflow: hidden;
-  position: relative;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.profile .gender {
-  height: 48px;
-  left: 80px;
-  position: absolute;
-  top: 565px;
-  width: 412px;
-}
-
-.profile .i-am-fluent-in {
+.profile .i-am-fluent-in,
+.profile .i-hope-to-learn,
+.profile .and-currently-i-am {
   color: var(--white);
   font-weight: 500;
-  left: 84px;
   line-height: 24px;
-  position: absolute;
-  top: 316px;
-  width: 295px;
-}
-
-.pill-2.pill-12.fluent.fluent-active {
-  background-color: black;
-  border-color: black;
-  color: white;
-}
-
-.pill.pill-12.fluent.fluent-active {
-  background-color: black;
-  border-color: black;
-  color: white;
-}
-
-.pill-3.pill-12.fluent.fluent-active {
-  background-color: black;
-  border-color: black;
-  color: white;
-}
-
-.pill-1.pill-12.fluent.fluent-active {
-  background-color: black;
-  border-color: black;
-  color: white;
-}
-
-.pill-4.pill-12.fluent.fluent-active {
-  background-color: black;
-  border-color: black;
-  color: white;
-}
-
-.pill-5.pill-12.fluent.fluent-active {
-  background-color: black;
-  border-color: black;
-  color: white;
-}
-
-.pill-6.pill-12.fluent.fluent-active {
-  background-color: black;
-  border-color: black;
-  color: white;
-}
-
-.pill-2.pill-12.learning.learning-active {
-  background-color: black;
-  border-color: black;
-  color: white;
-}
-
-.pill.pill-12.learning.learning-active {
-  background-color: black;
-  border-color: black;
-  color: white;
-}
-
-.pill-3.pill-12.learning.learning-active {
-  background-color: black;
-  border-color: black;
-  color: white;
-}
-
-.pill-1.pill-12.learning.learning-active {
-  background-color: black;
-  border-color: black;
-  color: white;
-}
-
-.pill-4.pill-12.learning.learning-active {
-  background-color: black;
-  border-color: black;
-  color: white;
-}
-
-.pill-5.pill-12.learning.learning-active {
-  background-color: black;
-  border-color: black;
-  color: white;
-}
-
-.pill-6.pill-12.learning.learning-active {
-  background-color: black;
-  border-color: black;
-  color: white;
-}
-
-.fluent-button.level-active {
-  background-color: black;
-  border-color: black;
-  color: white;
+  width: 100%;
+  margin: 20px 0 10px;
 }
 
 .profile .button-container {
   display: flex;
   justify-content: space-around;
-  margin-top: 570px;
+  margin-top: 20px;
+  width: 100%;
 }
 
-.profile .fluent-button {
-  flex: 0 0 auto;
-  position: relative;
-  width: 150px;
-  border-radius: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-right: 10px;
-  margin-right: 10px;
-  margin-top: -15.00px;
+.profile .fluent-button,
+.profile .pill-12 {
+  border-radius: 20px;
+  padding: 10px 20px;
   font-size: 14px;
   font-weight: 550;
-}
-
-.profile .group-7 {
-  align-items: flex-start;
-  display: flex;
-  gap: 8px;
-  height: 32px;
-  left: 42px;
-  min-width: 497px;
-  position: absolute;
-  top: 361px;
-}
-
-.profile .group-7:hover{
-  background-color: transparent;
-  border-color: black;
-  color: white;
-}
-
-.profile .pill-2 {
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  border: 1px solid var(--gray);
   background-color: var(--white);
-  width: 66px;
+  color: var(--black);
 }
 
-.profile .language {
-  margin-left: -9.07px;
-  margin-right: -9.07px;
-  width: 52px;
+.profile .fluent-button:hover,
+.profile .pill-12:hover {
+  background-color: var(--light-gray);
+  border-color: var(--light-gray);
+  color: var(--white);
 }
 
-.profile .pill {
-  background-color: var(--black-haze-2);
-  height: 32px;
-  width: 74px;
+.profile .fluent-button.level-active,
+.profile .pill-12.fluent-active,
+.profile .pill-12.learning-active {
+  background-color: var(--black);
+  border-color: var(--black);
+  color: var(--white);
 }
 
-.profile .language-1 {
-  margin-left: -6.96px;
-  margin-right: -6.96px;
-  width: 56px;
+.profile .group-7,
+.profile .group-6 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  margin: 10px 0;
+  justify-content: center;
 }
 
-.profile .pill-3 {
-  background-color: var(--black-haze-2);
-  width: 59px;
+.profile .group-7 button,
+.profile .group-6 button {
+  flex: 0 1 calc(50% - 8px); 
 }
 
-.profile .language-2 {
-  margin-left: -7.67px;
-  margin-right: -7.67px;
-  white-space: nowrap;
-  width: fit-content;
-}
-
-.profile .pill-1 {
-  background-color: var(--black-haze-2);
-  width: 58px;
-}
-
-.profile .language-3 {
-  margin-left: -13.19px;
-  margin-right: -13.19px;
-  white-space: nowrap;
-  width: fit-content;
-}
-
-.profile .pill-4 {
-  background-color: var(--black-haze-2);
-  width: 61px;
-}
-
-.profile .language-4 {
-  margin-left: -7.64px;
-  margin-right: -7.64px;
-  white-space: nowrap;
-  width: fit-content;
-}
-
-.profile .pill-5 {
-  background-color: var(--black-haze-2);
-  width: 64px;
-}
-
-.profile .language-5 {
-  margin-left: -7.10px;
-  margin-right: -7.10px;
-  white-space: nowrap;
-  width: fit-content;
-}
-
+.profile .pill-2,
+.profile .pill,
+.profile .pill-3,
+.profile .pill-1,
+.profile .pill-4,
+.profile .pill-5,
 .profile .pill-6 {
   background-color: var(--black-haze-2);
-  width: 67px;
-}
-
-.profile .language-6 {
-  margin-left: -13.06px;
-  margin-right: -13.06px;
-  white-space: nowrap;
-  width: fit-content;
-}
-
-.profile .i-hope-to-learn {
-  color: var(--white);
-  font-weight: 500;
-  left: 84px;
-  line-height: 24px;
-  position: absolute;
-  top: 421px;
-  width: 295px;
-}
-
-.profile .and-currently-i-am {
-  color: var(--white);
-  font-weight: 500;
-  left: 84px;
-  line-height: 24px;
-  position: absolute;
-  top: 526px;
-  width: 295px;
-}
-
-.profile .group-6 {
-  align-items: flex-start;
-  display: flex;
-  gap: 8px;
   height: 32px;
-  left: 45px;
-  min-width: 494px;
-  position: absolute;
-  top: 466px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-.profile .group-6:hover{
-  background-color: transparent;
-  border-color: black;
-  color: white;
-}
-
-.profile .pill-7 {
-  background-color: var(--white);
-  width: 65px;
-}
-
-.profile .language-7 {
-  margin-left: -9.27px;
-  margin-right: -9.27px;
-  width: 52px;
-}
-
-.profile .language-8 {
-  margin-left: -7.18px;
-  margin-right: -7.18px;
-  width: 56px;
-}
-
-.profile .language-9 {
-  margin-left: -7.85px;
-  margin-right: -7.85px;
-  white-space: nowrap;
-  width: fit-content;
-}
-
-.profile .pill-8 {
-  background-color: var(--black-haze-2);
-  width: 57px;
-}
-
-.profile .language-10 {
-  margin-left: -13.36px;
-  margin-right: -13.36px;
-  white-space: nowrap;
-  width: fit-content;
-}
-
-.profile .pill-9 {
-  background-color: var(--black-haze-2);
-  width: 60px;
-}
-
-.profile .language-11 {
-  margin-left: -7.83px;
-  margin-right: -7.83px;
-  white-space: nowrap;
-  width: fit-content;
-}
-
-.profile .pill-10 {
-  background-color: var(--black-haze-2);
-  width: 63px;
-}
-
-.profile .language-12 {
-  margin-left: -7.29px;
-  margin-right: -7.29px;
-  white-space: nowrap;
-  width: fit-content;
-}
-
-.profile .pill-11 {
-  background-color: var(--black-haze-2);
-  width: 66px;
-}
-
-.profile .language-13 {
-  margin-left: -13.26px;
-  margin-right: -13.26px;
-  white-space: nowrap;
-  width: fit-content;
+.profile .pill-2:hover,
+.profile .pill:hover,
+.profile .pill-3:hover,
+.profile .pill-1:hover,
+.profile .pill-4:hover,
+.profile .pill-5:hover,
+.profile .pill-6:hover {
+  background-color: var(--light-gray);
+  border-color: var(--light-gray);
+  color: var(--white);
 }
 
 .profile .button {
   background-color: var(--gray);
-  margin-top: 48px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  border: none;
+  border-radius: 8px;
+  color: var(--white);
+  width: 100%;
+}
+
+.profile .button:hover {
+  background-color: var(--dark-gray);
+  color: var(--white);
 }
 
 .profile .button-1 {
   background-color: var(--black);
   margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  border: none;
+  border-radius: 8px;
+  color: var(--white);
+  width: 100%;
 }
 
-.profile .fill-in-later {
+.profile .button-1:hover {
+  background-color: var(--dark-gray);
+  color: var(--white);
+}
+
+.profile .fill-in-later,
+.profile .continue {
   color: var(--white);
   font-weight: 500;
   line-height: 30px;
-  position: relative;
   white-space: nowrap;
   width: fit-content;
 }
@@ -443,25 +228,11 @@
   gap: 8px;
   height: 40px;
   justify-content: center;
-  margin-right: 11.0px;
   padding: 0px 16px;
-  position: relative;
-  width: 400px;
+  width: 100%;
 }
 
-.profile .language-14 {
-  letter-spacing: 0;
-  line-height: 19.6px;
-  margin-top: -1.00px;
-  position: relative;
-}
-
-.profile .pill-12 {
-  align-items: center;
-  border-radius: 20px;
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  padding: 6px 16px;
-  position: relative;
+.profile .button-2:hover .continue,
+.profile .button-1:hover .fill-in-later {
+  color: var(--black);
 }

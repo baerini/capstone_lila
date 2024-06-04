@@ -307,11 +307,13 @@
   align-items: flex-start;
   display: flex;
   flex-direction: column;
+  overflow: auto;
   gap: 10px;
   left: 24px;
   position: absolute;
   top: 32px;
   width: 736px;
+  height: 736px;
   margin-top: 55px;
 }
 

@@ -25,7 +25,6 @@ def translate(origin: str, country: str):
     translator = Translator()
     print(origin+"-->>"+country)
     result = None
-    print(supported_language[country])
     try:
         result = translator.translate(origin, supported_language[country]).text 
         return result

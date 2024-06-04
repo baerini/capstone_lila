@@ -59,7 +59,7 @@
               </div>
             </div>
           </header>
-          <div class="list-1 list-2">
+          <div class="list-1 list-2" style="overflow: auto;">
             <div class="navbar small-text">
               <div class="navbar-link-place navbar-link-1">Name</div>
               <div class="navbar-link-fluent-in">Fluent in</div>
@@ -73,7 +73,7 @@
             </div>
             
             {% for user in recommend_users %}
-            <div class="list-item list-2" style="margin-top: 10px; margin-bottom: 10px;">
+            <div class="list-item list-2" style="padding-top: 15px; margin-top: 10px; margin-bottom: 10px;">
               <div class="navbar-link-minji navbar-link small-text" id="{{ user.user_id }}" style="cursor: pointer;" onclick="submit(this)">{{ user.name }}</div>
               <div class="language language-2 small-text">{{ user.fluent }}</div>
               <div class="language-1 language-2 small-text">{{ user.learning }}</div>
@@ -104,7 +104,7 @@
             {% endfor %}
             
             {% for user in users %}
-            <div class="list-item list-2" style="margin-top: 10px; margin-bottom: 10px;">
+            <div class="list-item list-2" style="padding-top: 15px; margin-top: 10px; margin-bottom: 10px;">
               <div class="navbar-link-minji navbar-link small-text" id="{{ user.user_id }}" style="cursor: pointer;" onclick="submit(this)">{{ user.name }}</div>
               <div class="language language-2 small-text">{{ user.fluent }}</div>
               <div class="language-1 language-2 small-text">{{ user.learning }}</div>
@@ -223,11 +223,6 @@
       // Function to handle filter selection
       function filterSelection(category, value) {
         var buttons = document.querySelectorAll(`.filter-category[data-category="${category}"] .filter-btn`);
-        console.log(buttons);
-        buttons.forEach(function(button) {
-          button.classList.remove('active');
-        });
-      
         buttons.forEach(function(button) {
           if (button.textContent.trim().toLowerCase() === value.toString().toLowerCase() ||
               (category === 'age' && value === 60 && button.textContent.trim() === '60+')) {
@@ -236,9 +231,6 @@
             button.classList.remove('active');
           }
         });
-      
-        // Store the selected values in a variable or perform any other logic
-        //console.log(`Selected ${category}: ${value}`);
       }
       
       // Function to apply the filter (example)

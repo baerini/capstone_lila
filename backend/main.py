@@ -19,7 +19,7 @@ import pandas as pd
 # from db.database import *
 # from model.introduce_sim import intro_recommend, collaborative_recommend
 from model.introduce_sim import *
-# from model.collaborative import *
+from model.collaborative import *
 ###
     
 socketio = SocketIO(app)
@@ -126,74 +126,151 @@ def login_proc():
         except NoResultFound:
             return jsonify(result="Invalid Params"), 400
 
+def convert_age(age):
+    if age is None:
+        return None
+    
+    if age >= 60:
+        return "60대"
+    else:
+        return f"{age // 10 * 10}대"
+    
+def convert_gender(gender):
+    if gender is None:
+        return None
+    
+    if gender == "Male" or gender == "male":
+        return "남"
+    return "여"
+
+def convert_level(level):
+    if level is None:
+        return None
+    
+    if level == 1:
+        return "하"
+    elif level == 2:
+        return "중"
+    return "상"
+
+def refresh():
+    # updated_train.csv
+    users = User.query.all()
+    file_path = './updated_train.csv'
+    with open(file_path, mode='w', newline='', encoding='utf-8') as file:
+        writer = csv.writer(file)
+        
+        writer.writerow(['User_ID', '이름', '성별', '연령대', '자기 소개', '모국어', '외국어', '외국어 수준'])
+            
+        for user in users:
+            if user.success:
+                user_dto = user_to_dto(user)
+                
+                writer.writerow([
+                    user_dto.user_id,
+                    user_dto.name,
+                    convert_gender(user_dto.gender),
+                    convert_age(user_dto.age),
+                    translate_bio(user_dto.bio),
+                    user_dto.fluent,
+                    user_dto.learning,
+                    convert_level(user_dto.level),
+                ])
+            
+    ratings = Rating.query.all()
+    # ratings.csv
+    file_path2 = './ratings.csv'
+    with open(file_path2, mode='w', newline='', encoding='utf-8') as file:
+        writer = csv.writer(file)
+        
+        # User_ID,Target_User_ID,Rating
+        writer.writerow(['User_ID', 'Target_User_ID', 'Rating'])
+        
+        for rating in ratings:
+            writer.writerow([
+                rating.from_user_id,
+                rating.to_user_id,
+                rating.rating,
+            ])
+
+def user_query(user_id, age, gen, lev):
+    query = User.query
+    
+    if age is not None:
+        if age == 60:
+            query = query.filter(User.age >= 60)
+        else:
+            query = query.filter(User.age >= age, User.age < age + 10)
+
+    if gen is not None:
+        if gen == "male":
+            query = query.filter_by(gender="Male")
+        else:
+            query = query.filter_by(gender="Female")
+    if lev is not None:
+        query = query.filter_by(level=lev)
+
+    if user_id is not None:
+        query = query.filter_by(user_id=user_id)
+        return query.first()
+    else:
+        return query.all()
+    
 @app.route('/users', methods=['GET'])
 @jwt_required(optional=True)
 def users():
+    #query string
+    age = request.args.get('age', type=int)
+    gen = request.args.get('gen', type=str)
+    lev = request.args.get('lev', type=int)
+    ref = request.args.get('ref')
+    print(age, gen, lev, ref)
+    
     current_user_id = get_jwt_identity()
+    current_user = User.query.filter_by(id=current_user_id).first()
     user_dtos = []
-    users = User.query.all()
+    users = user_query(None, age, gen, lev)
+    print("USERS", users)
 
-    # db to csv
-    file_path = './test.csv'
-    with open(file_path, mode='w', newline='', encoding='utf-8') as file:
-        writer = csv.writer(file)
-        # User_ID,이름,성별,연령대,자기 소개,모국어,외국어,외국어 수준
-        writer.writerow(['User_ID', '이름', '성별', '연령대', '자기 소개', '모국어', '외국어', '외국어 수준'])
-        # Write the user data
-        def convert_age(age):
-            if isinstance(age, int):
-                return f"{age // 10 * 10}대"
-            return age
-        
-        def convert_gender(gender):
-            if gender == "Male":
-                return "남"
-            elif gender == "Female":
-                return "여"
-            return gender
-        
-        def convert_level(level):
-            if level == 1:
-                return "하"
-            elif level == 2:
-                return "중"
-            elif level == 3:
-                return "상"
-            return level
-            
-        for user in users:
-            user_dto = user_to_dto(user)
-            
-            writer.writerow([
-                user_dto.user_id,
-                user_dto.name,
-                convert_gender(user_dto.gender),
-                convert_age(user_dto.age),
-                translate_bio(user_dto.bio),
-                user_dto.fluent,
-                user_dto.learning,
-                convert_level(user_dto.level),
-            ])
+    # ref
+    if ref is not None:
+        refresh()
     
-    # introduce_sim
-    train = pd.read_csv('./test.csv')
-    print(intro_recommend(1, train, None, None, None))
+    #### introduce_sim
+    train = pd.read_csv('./updated_train.csv')
+    ratings = pd.read_csv('./ratings.csv')
+    recommend_user_dtos = []
+    recommend_users = []
     
+    for user_id in intro_recommend(current_user.user_id, train, convert_gender(gen), convert_age(age), convert_level(lev)):
+        find_user = user_query(user_id, age, gen, lev)
+        # find_user = User.query.filter_by(user_id=user_id).first()
+        if find_user:
+            recommend_users.append(find_user)
+            recommend_user_dtos.append(user_to_dto(find_user))
+    ####
     
+    print("################## introduce 끝 ##############")
+    print(recommend_users)
+    #### collaborative
+    for user_id in collaborative_recommend(current_user.user_id, train, ratings):
+        find_user = user_query(user_id, age, gen, lev)
+        # find_user = User.query.filter_by(user_id=user_id).first()
+        if find_user and find_user not in recommend_users:
+            recommend_users.append(find_user)
+            recommend_user_dtos.append(user_to_dto(find_user))
+    ####
+    print("################# collaborative 끝 ################")
+    print(recommend_users)
     
-    
-    
-    
-    
-    
-    
+    users = [user for user in users if user not in recommend_users]
     for user in users:
         if (user.id.decode() == current_user_id) or not user.success:
             continue
         user_dtos.append(user_to_dto(user))
-        
+    
     if current_user_id:
-        return render_template('users.html', users=user_dtos)
+        return render_template('users.html', users=user_dtos, recommend_users=recommend_user_dtos)
     else:
         return render_template('login.html')
 
@@ -205,7 +282,7 @@ def create_chatroom():
         
     user_id = data['id']
     user1 = User.query.filter_by(id=current_user_id).first()
-    user2 = User.query.filter_by(user_id=user_id).first() # 수정필요
+    user2 = User.query.filter_by(user_id=user_id).first()
     
     chatroom = Chatroom.query.filter(
         (Chatroom.user1_id == user1.user_id) & (Chatroom.user2_id == user2.user_id) |
@@ -257,6 +334,29 @@ def chatrooms():
         return render_template('chatrooms.html', chatrooms=chatroom_dtos, sender=user_to_dto(user))
     else:
         return render_template('login.html')
+
+@app.route('/add_rating', methods=['POST'])
+@jwt_required(optional=True)
+def add_rating():
+    data = request.json
+    current_user_id = get_jwt_identity()
+    user = User.query.filter_by(id=current_user_id).first()
+    to_user_id = data['to_user_id']
+    rating = data['rating']
+    
+    existing_rating = Rating.query.filter_by(from_user_id=user.user_id, to_user_id=to_user_id).first()
+    if existing_rating:
+        existing_rating.rating = rating
+    else:
+        new_rating = Rating(
+            from_user_id=user.user_id,
+            to_user_id=to_user_id,
+            rating=rating
+        )
+        db.session.add(new_rating)
+    db.session.commit()
+    
+    return jsonify({'status': 'success'}), 200
     
 @app.route('/get_chatrooms', methods=['GET'])
 @jwt_required(optional=True)
@@ -350,8 +450,6 @@ def chatroom(id):
 @socketio.on('message')
 @jwt_required(optional=True)
 def handle_message(data):
-    current_user_id = get_jwt_identity()
-    
     d = json.loads(data)
     
     chatroom_id = d.get('id')
@@ -379,6 +477,7 @@ def handle_message(data):
     db.session.commit()
     
     d['translation'] = translate(message, receiver.fluent.decode())
+    print(d)
     emit('message', json.dumps(d), broadcast=True)
 
 @app.route('/profile', methods=['GET', 'POST'])

@@ -27,16 +27,13 @@ class User(db.Model):
     bio = db.Column(db.String(255))
     success = db.Column(db.Boolean)
 
-"""
-social
-"""
-class Friend(db.Model):
-    __tablename__ = "Friend"
+# class Friend(db.Model):
+#     __tablename__ = "Friend"
     
-    friend_id = db.Column('friend_id', db.Integer, primary_key=True)
-    from_user_id = db.Column(db.Integer, db.ForeignKey('User.user_id'))
-    to_user_id = db.Column(db.Integer, db.ForeignKey('User.user_id'))
-    state = db.Column(db.Boolean)
+#     friend_id = db.Column('friend_id', db.Integer, primary_key=True)
+#     from_user_id = db.Column(db.Integer, db.ForeignKey('User.user_id'))
+#     to_user_id = db.Column(db.Integer, db.ForeignKey('User.user_id'))
+#     state = db.Column(db.Boolean)
     
 class Rating(db.Model):
     __tablename__ = "Rating"
@@ -44,7 +41,7 @@ class Rating(db.Model):
     rating_id = db.Column('rating_id', db.Integer, primary_key=True)
     from_user_id = db.Column(db.Integer, db.ForeignKey('User.user_id'))
     to_user_id = db.Column(db.Integer, db.ForeignKey('User.user_id'))
-    rating = db.Column(db.Double)
+    rating = db.Column(db.Integer)
 
 """
 lang

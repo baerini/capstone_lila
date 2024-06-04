@@ -8,9 +8,9 @@
     <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
     <meta name="og:type" content="website" />
     <meta name="twitter:card" content="photo" />
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/findu95au95friend.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styleguide.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/globals.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/findu95au95friend2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styleguide2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/globals2.css') }}">
     <!-- <link rel="stylesheet" type="text/css" href="css/findu95au95friend.css" />
     <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
     <link rel="stylesheet" type="text/css" href="css/globals.css" /> -->
@@ -47,6 +47,8 @@
                 <!-- <img class="filter-1" src="img/filter.svg" alt="filter" /> -->
                 <div class="label-3 label-4 presetsbody2">Filter</div>
               </div>
+              <div class="filter-2" style="cursor: pointer;" onclick="refresh()"><img class="refresh-1" src="{{ url_for('static', filename='img/refresh-1@2x.png') }}" alt="refresh 1" /></div>
+              <!-- <div class="filter-2"><img class="refresh-1" src="img/refresh-1@2x.png" alt="refresh 1" /></div> -->
               <div class="segmented-control">
                 <img class="item-1 item-2" src="{{ url_for('static', filename='img/item-1.svg') }}" style="cursor: pointer;" alt="Item 1" />
                 <!-- <img class="item-1 item-2" src="img/item-1.svg" alt="Item 1" /> -->
@@ -59,36 +61,122 @@
           </header>
           <div class="list-1 list-2">
             <div class="navbar small-text">
-              <div class="navbar-link-place navbar-link">Name</div>
+              <div class="navbar-link-place navbar-link-1">Name</div>
               <div class="navbar-link-fluent-in">Fluent in</div>
-              <div class="navbar-link-learning navbar-link">Learning</div>
-              <div class="navbar-link-level navbar-link">Level</div>
-              <div class="navbar-link-gender navbar-link">Gender</div>
-              <div class="navbar-link-age navbar-link">Age</div>
-              <div class="navbar-link-hobby navbar-link">Hobby</div>
+              <div class="navbar-link">Learning</div>
+              <div class="navbar-link-level navbar-link-1">Level</div>
+              <div class="navbar-link-gender navbar-link-1">Gender</div>
+              <div class="navbar-link-age navbar-link-1">Age</div>
+              <div class="navbar-link">Hobby</div>
+              <div class="navbar-link-recommend navbar-link-1">Recommend</div>
+              <div class="navbar-link-rate navbar-link-1">Rate</div>
             </div>
             
-            {% for user in users %}
-            <div class="list-item list-2">
+            {% for user in recommend_users %}
+            <div class="list-item list-2" style="margin-top: 10px; margin-bottom: 10px;">
               <div class="navbar-link-minji navbar-link small-text" id="{{ user.user_id }}" style="cursor: pointer;" onclick="submit(this)">{{ user.name }}</div>
               <div class="language language-2 small-text">{{ user.fluent }}</div>
               <div class="language-1 language-2 small-text">{{ user.learning }}</div>
-              <div class="pill pill-2">
-                <div class="tag tag-24"><div class="label label-4 inter-semi-bold-black-12px">{{ user.level }}</div></div>
+              <div class="pill-2">
+                <div class="tag tag-24"><div class="label-4 label-5 inter-semi-bold-black-12px">{{ user.level }}</div></div>
               </div>
-              <div class="pill-1 pill-2">
-                <div class="tag-1 tag-24"><div class="label label-4 inter-semi-bold-black-12px">{{ user.gender }}</div></div>
+              <div class="pill">
+                <div class="tag-1 tag-24"><div class="label label-5 inter-semi-bold-black-12px">{{ user.gender }}</div></div>
               </div>
               <div class="number presetsbody2">{{ user.age }}</div>
               <div class="navbar-link-reading-books presetsbody2">{{ user.hobby }}</div>
-              <img class="dot-12" style="cursor: pointer;" src="{{ url_for('static', filename='img/dot.svg') }}" style="cursor: pointer;" alt="Dot" />
+              <!-- <img class="dot-12" style="cursor: pointer;" src="{{ url_for('static', filename='img/dot.svg') }}" style="cursor: pointer;" alt="Dot" /> -->
               <!-- <img class="dot-12" src="img/dot.svg" alt="Dot" /> -->
+              
+              <div class="pill-3"><img class="star-2" style="cursor: pointer;" src="{{ url_for('static', filename='img/star-2.png') }}" style="cursor: pointer;" alt="star" /></div>
+              <!-- <div class="pill-3"><img class="star-2" src="img/star-2.png" alt="star 2" /></div> -->
+              <div class="group-8">
+                <div class="flex-row-1">
+                  <img class="flex-row-item" style="cursor: pointer;" src="{{ url_for('static', filename='img/bad-1.png') }}" alt="bad" onclick="handleClick(event, '{{ user.user_id }}', 1)"/>
+                  <!-- <img class="flex-row-item" src="img/smile-1.png" alt="smile 1" /> -->
+                  <img class="flex-row-item" style="cursor: pointer;" src="{{ url_for('static', filename='img/just-1.png') }}" alt="just" onclick="handleClick(event, '{{ user.user_id }}', 2)"/>
+                  <!-- <img class="flex-row-item" src="img/just-1.png" alt="just 1" /> -->
+                  <img class="flex-row-item" style="cursor: pointer;" src="{{ url_for('static', filename='img/smile-1.png') }}" alt="smile" onclick="handleClick(event, '{{ user.user_id }}', 3)"/>
+                  <!-- <img class="flex-row-item" src="img/bad-1.png" alt="bad 1" /> -->
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            
+            {% for user in users %}
+            <div class="list-item list-2" style="margin-top: 10px; margin-bottom: 10px;">
+              <div class="navbar-link-minji navbar-link small-text" id="{{ user.user_id }}" style="cursor: pointer;" onclick="submit(this)">{{ user.name }}</div>
+              <div class="language language-2 small-text">{{ user.fluent }}</div>
+              <div class="language-1 language-2 small-text">{{ user.learning }}</div>
+              <div class="pill-2">
+                <div class="tag tag-24"><div class="label-4 label-5 inter-semi-bold-black-12px">{{ user.level }}</div></div>
+              </div>
+              <div class="pill">
+                <div class="tag-1 tag-24"><div class="label label-5 inter-semi-bold-black-12px">{{ user.gender }}</div></div>
+              </div>
+              <div class="number presetsbody2">{{ user.age }}</div>
+              <div class="navbar-link-reading-books presetsbody2">{{ user.hobby }}</div>
+              <!-- <img class="dot-12" style="cursor: pointer;" src="{{ url_for('static', filename='img/dot.svg') }}" style="cursor: pointer;" alt="Dot" /> -->
+              <!-- <img class="dot-12" src="img/dot.svg" alt="Dot" /> -->
+              
+              <div class="pill-3"></div>
+              <!-- <div class="pill-3"><img class="star-2" src="img/star-2.png" alt="star 2" /></div> -->
+              <div class="group-8">
+                <div class="flex-row-1">
+                  <img class="flex-row-item" style="cursor: pointer;" src="{{ url_for('static', filename='img/bad-1.png') }}" alt="bad" onclick="handleClick(event, '{{ user.user_id }}', 1)"/>
+                  <!-- <img class="flex-row-item" src="img/smile-1.png" alt="smile 1" /> -->
+                  <img class="flex-row-item" style="cursor: pointer;" src="{{ url_for('static', filename='img/just-1.png') }}" alt="just" onclick="handleClick(event, '{{ user.user_id }}', 2)"/>
+                  <!-- <img class="flex-row-item" src="img/just-1.png" alt="just 1" /> -->
+                  <img class="flex-row-item" style="cursor: pointer;" src="{{ url_for('static', filename='img/smile-1.png') }}" alt="smile" onclick="handleClick(event, '{{ user.user_id }}', 3)"/>
+                  <!-- <img class="flex-row-item" src="img/bad-1.png" alt="bad 1" /> -->
+                </div>
+              </div>
             </div>
             {% endfor %}
           </div>
         </div>
       </div>
     </div>
+    
+    <div id="filterModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Filter Options</h2>
+        <form id="filterForm">
+          <div class="filter-category" data-category="age">
+            <label>Age:</label>
+            <div class="filter-buttons">
+              <div class="filter-buttons">
+                <button type="button" class="filter-btn" onclick="filterSelection('age', 10)">10</button>
+              <button type="button" class="filter-btn" onclick="filterSelection('age', 20)">20</button>
+              <button type="button" class="filter-btn" onclick="filterSelection('age', 30)">30</button>
+              <button type="button" class="filter-btn" onclick="filterSelection('age', 40)">40</button>
+              <button type="button" class="filter-btn" onclick="filterSelection('age', 50)">50</button>
+              <button type="button" class="filter-btn" onclick="filterSelection('age', 60)">60+</button>
+              </div>
+            </div>
+          </div>
+          <div class="filter-category" data-category="gender">
+            <label>Gender:</label>
+            <div class="filter-buttons">
+              <button type="button" class="filter-btn" onclick="filterSelection('gender', 'male')">Male</button>
+              <button type="button" class="filter-btn" onclick="filterSelection('gender', 'female')">Female</button>
+            </div>
+          </div>
+          <div class="filter-category" data-category="level">
+            <label>Language Level:</label>
+            <div class="filter-buttons">
+              <button type="button" class="filter-btn" onclick="filterSelection('level', 'Low')">Low</button>
+              <button type="button" class="filter-btn" onclick="filterSelection('level', 'Mid')">Mid</button>
+              <button type="button" class="filter-btn" onclick="filterSelection('level', 'High')">High</button>
+            </div>
+          </div>
+          <button class = "filter-apply-button" type="button" onclick="applyFilter()">Apply Filter</button>
+        </form>
+      </div>
+    </div>
+    
+    
     <script>
       function home() {
         window.location.href="/"
@@ -105,6 +193,87 @@
       function profile() {
         window.location.href="/profile"
       }
+      
+      // Get the modal
+      var modal = document.getElementById("filterModal");
+      
+      // Get the button that opens the modal
+      var btn = document.querySelector(".filter");
+      
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+      
+      // When the user clicks the button, open the modal 
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+      
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+      
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+      
+      // Function to handle filter selection
+      function filterSelection(category, value) {
+        var buttons = document.querySelectorAll(`.filter-category[data-category="${category}"] .filter-btn`);
+        console.log(buttons);
+        buttons.forEach(function(button) {
+          button.classList.remove('active');
+        });
+      
+        buttons.forEach(function(button) {
+          if (button.textContent.trim().toLowerCase() === value.toString().toLowerCase() ||
+              (category === 'age' && value === 60 && button.textContent.trim() === '60+')) {
+            button.classList.toggle('active');
+          } else {
+            button.classList.remove('active');
+          }
+        });
+      
+        // Store the selected values in a variable or perform any other logic
+        //console.log(`Selected ${category}: ${value}`);
+      }
+      
+      // Function to apply the filter (example)
+      function applyFilter() {
+        var selectedAge = document.querySelector('.filter-category[data-category="age"] .filter-btn.active');
+        var selectedGender = document.querySelector('.filter-category[data-category="gender"] .filter-btn.active');
+        var selectedLevel = document.querySelector('.filter-category[data-category="level"] .filter-btn.active');
+        
+        var age = selectedAge ? selectedAge.textContent.trim() : null;
+        var gender = selectedGender ? selectedGender.textContent.trim().toLowerCase() : null;
+        var level = selectedLevel ? selectedLevel.textContent.trim().toLowerCase() : null;
+
+        var url = '/users?';
+        if (age) {
+          url += `age=${age}&`;
+        }
+        if (gender) {
+          url += `gen=${gender}&`;
+        }
+        if (level) {
+          url += `lev=${level === 'low' ? 1 : (level === 'mid' ? 2 : 3)}&`;
+        }
+
+        url = url.endsWith('&') ? url.slice(0, -1) : url;
+
+        window.location.href = url;
+      
+        modal.style.display = "none";
+      }
+      
+      function refresh() {
+        url = "/users?ref=1";
+        window.location.href=url;
+      }
+      
     </script>
     <script src="{{ url_for('static', filename='js/users.js') }}"></script>
   </body>

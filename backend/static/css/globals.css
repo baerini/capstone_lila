@@ -1,7 +1,7 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
 @import url("https://fonts.googleapis.com/css?family=Inter:500,400,700,600");
 /* The following line is used to measure usage of this code. You can remove it if you want. */
-/* @import url("https://px.animaapp.com/662fdc5935112623531687e3.662fdc5a35112623531687e6.gkA6NHS.hcp.png"); */
+@import url("https://px.animaapp.com/662fdc5935112623531687e3.662fdc5a35112623531687e6.gkA6NHS.hcp.png");
 
 
 
@@ -116,7 +116,7 @@
   color: var(--black);
   font-weight: 700;
   line-height: normal;
-  margin-top: 65.00px;;
+  margin-top: 65.00px;
   position: relative;
 }
 

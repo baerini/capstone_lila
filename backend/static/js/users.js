@@ -33,3 +33,27 @@ function submit(element) {
         console.error('Error:', error);
     });
 }
+
+function sendRating(userId, rating) {
+    fetch('/add_rating', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ to_user_id: userId, rating: rating })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert("rating is reflected.");
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
+function handleClick(event, userId, rating) {
+    event.preventDefault();
+    sendRating(userId, rating);
+}

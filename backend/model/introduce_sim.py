@@ -50,7 +50,11 @@ def stopwords(path):
     # 불용어 파일에서 불용어 읽어오기
     with open(path+'stopwords-ko.txt', 'r', encoding='utf-8') as f:
         stopwords = f.readlines()
+    print("before")
+    print(stopwords)
     stopwords = [tokenizer.morphs(word)[0] for word in stopwords]
+    print("after")
+    print(stopwords)
     return stopwords
 
 def cosine_sim(train, n, gender, age, level):

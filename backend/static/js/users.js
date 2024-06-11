@@ -53,7 +53,33 @@ function sendRating(userId, rating) {
     });
 }
 
-function handleClick(event, userId, rating) {
+function handleClick(event, userId, rating, type) {
     event.preventDefault();
     sendRating(userId, rating);
+    
+    const badImg = document.getElementById(`bad-${userId}`);
+    const justImg = document.getElementById(`just-${userId}`);
+    const smileImg = document.getElementById(`smile-${userId}`);
+    
+    if (type === 'bad') {
+        toggleImage(badImg, 'bad');
+        justImg.src = "/static/img/just-1.png";
+        smileImg.src = "/static/img/smile-1.png";
+    } else if (type === 'just') {
+        toggleImage(justImg, 'just');
+        badImg.src = "/static/img/bad-1.png";
+        smileImg.src = "/static/img/smile-1.png";
+    } else if (type === 'smile') {
+        toggleImage(smileImg, 'smile');
+        badImg.src = "/static/img/bad-1.png";
+        justImg.src = "/static/img/just-1.png";
+    }
+}
+
+function toggleImage(imgElement, type) {
+    if (imgElement.src.includes(`${type}-1.png`)) {
+        imgElement.src = `/static/img/${type}-2.png`;
+    } else {
+        imgElement.src = `/static/img/${type}-1.png`;
+    }
 }

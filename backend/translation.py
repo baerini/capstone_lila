@@ -23,7 +23,7 @@ supported_language = {
 
 def translate(origin: str, country: str):
     translator = Translator()
-    print(origin+"-->>"+country)
+    # print(origin+"-->>"+country)
     result = None
     try:
         result = translator.translate(origin, supported_language[country]).text 

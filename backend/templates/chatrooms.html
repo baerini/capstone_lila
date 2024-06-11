@@ -228,6 +228,7 @@
             url: '/get_chatrooms',
             type: 'GET',
             success: function(chatrooms) {
+              console.log("success@@@@@@@@@@@@");
               var chatroomsDiv = document.getElementById("chatrooms");
               chatroomsDiv.innerHTML = "";
               chatrooms.forEach(function(chatroom) {

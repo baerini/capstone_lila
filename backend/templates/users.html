@@ -85,19 +85,12 @@
               </div>
               <div class="number presetsbody2">{{ user.age }}</div>
               <div class="navbar-link-reading-books presetsbody2">{{ user.hobby }}</div>
-              <!-- <img class="dot-12" style="cursor: pointer;" src="{{ url_for('static', filename='img/dot.svg') }}" style="cursor: pointer;" alt="Dot" /> -->
-              <!-- <img class="dot-12" src="img/dot.svg" alt="Dot" /> -->
-              
-              <div class="pill-3"><img class="star-2" style="cursor: pointer;" src="{{ url_for('static', filename='img/star-2.png') }}" style="cursor: pointer;" alt="star" /></div>
-              <!-- <div class="pill-3"><img class="star-2" src="img/star-2.png" alt="star 2" /></div> -->
+              <div class="pill-3"><img class="star-2" style="cursor: pointer;" src="{{ url_for('static', filename='img/star-1.png') }}" style="cursor: pointer;" alt="star" /></div>
               <div class="group-8">
                 <div class="flex-row-1">
-                  <img class="flex-row-item" style="cursor: pointer;" src="{{ url_for('static', filename='img/bad-1.png') }}" alt="bad" onclick="handleClick(event, '{{ user.user_id }}', 1)"/>
-                  <!-- <img class="flex-row-item" src="img/smile-1.png" alt="smile 1" /> -->
-                  <img class="flex-row-item" style="cursor: pointer;" src="{{ url_for('static', filename='img/just-1.png') }}" alt="just" onclick="handleClick(event, '{{ user.user_id }}', 2)"/>
-                  <!-- <img class="flex-row-item" src="img/just-1.png" alt="just 1" /> -->
-                  <img class="flex-row-item" style="cursor: pointer;" src="{{ url_for('static', filename='img/smile-1.png') }}" alt="smile" onclick="handleClick(event, '{{ user.user_id }}', 3)"/>
-                  <!-- <img class="flex-row-item" src="img/bad-1.png" alt="bad 1" /> -->
+                  <img class="flex-row-item" id="bad-{{ user.user_id }}" style="cursor: pointer;" src="{{ url_for('static', filename='img/bad-1.png') }}" alt="bad" onclick="handleClick(event, '{{ user.user_id }}', 1, 'bad')"/>
+                  <img class="flex-row-item" id="just-{{ user.user_id }}" style="cursor: pointer;" src="{{ url_for('static', filename='img/just-1.png') }}" alt="just" onclick="handleClick(event, '{{ user.user_id }}', 2, 'just')"/>
+                  <img class="flex-row-item" id="smile-{{ user.user_id }}" style="cursor: pointer;" src="{{ url_for('static', filename='img/smile-1.png') }}" alt="smile" onclick="handleClick(event, '{{ user.user_id }}', 3, 'smile')"/>
                 </div>
               </div>
             </div>

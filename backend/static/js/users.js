@@ -56,11 +56,19 @@ function sendRating(userId, rating) {
 function handleClick(event, userId, rating, type) {
     event.preventDefault();
     sendRating(userId, rating);
+<<<<<<< HEAD
 
     const badImg = document.getElementById(`bad-${userId}`);
     const justImg = document.getElementById(`just-${userId}`);
     const smileImg = document.getElementById(`smile-${userId}`);
 
+=======
+    
+    const badImg = document.getElementById(`bad-${userId}`);
+    const justImg = document.getElementById(`just-${userId}`);
+    const smileImg = document.getElementById(`smile-${userId}`);
+    
+>>>>>>> 756504c9e95f1c82e0dae31b5b69ac40a539e408
     if (type === 'bad') {
         toggleImage(badImg, 'bad');
         justImg.src = "/static/img/just-1.png";
@@ -74,6 +82,17 @@ function handleClick(event, userId, rating, type) {
         badImg.src = "/static/img/bad-1.png";
         justImg.src = "/static/img/just-1.png";
     }
+<<<<<<< HEAD
+}
+
+function toggleImage(imgElement, type) {
+    if (imgElement.src.includes(`${type}-1.png`)) {
+        imgElement.src = `/static/img/${type}-2.png`;
+    } else {
+        imgElement.src = `/static/img/${type}-1.png`;
+    }
+=======
+>>>>>>> 756504c9e95f1c82e0dae31b5b69ac40a539e408
 }
 
 function toggleImage(imgElement, type) {

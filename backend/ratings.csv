@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 User_ID,Target_User_ID,Rating
 6,14,2
 6,42,2
@@ -293,3 +294,12 @@ User_ID,Target_User_ID,Rating
 1000,127,1
 1000,163,1
 1000,218,1
+=======
+User_ID,Target_User_ID,Rating
+1,2,1
+1,23,2
+1,3,3
+1,4,2
+1,6,2
+1,8,2
+>>>>>>> 756504c9e95f1c82e0dae31b5b69ac40a539e408

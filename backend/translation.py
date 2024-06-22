@@ -23,10 +23,14 @@ supported_language = {
 
 def translate(origin: str, country: str):
     translator = Translator()
+<<<<<<< HEAD
     print(country, supported_language.keys())
     if country in supported_language.keys():
         print(origin+"-->>"+country)
     
+=======
+    # print(origin+"-->>"+country)
+>>>>>>> 756504c9e95f1c82e0dae31b5b69ac40a539e408
     result = None
     try:
         result = translator.translate(origin, supported_language[country]).text

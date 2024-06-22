@@ -79,8 +79,12 @@ def stopwords(path):
         stopwords = f.readlines()
     print("before")
     print(stopwords)
+<<<<<<< HEAD
     #stopwords = [word.strip() for word in stopwords]
     stopwords = [tokenizer.morphs(word)[0] for word in stopwords if word]
+=======
+    stopwords = [tokenizer.morphs(word)[0] for word in stopwords]
+>>>>>>> 756504c9e95f1c82e0dae31b5b69ac40a539e408
     print("after")
     print(stopwords)
     return stopwords

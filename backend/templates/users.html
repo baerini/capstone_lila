@@ -92,11 +92,11 @@
               <!-- <div class="pill-3"><img class="star-2" src="img/star-2.png" alt="star 2" /></div> -->
               <div class="group-8">
                 <div class="flex-row-1">
-                  <img class="flex-row-item" style="cursor: pointer;" src="{{ url_for('static', filename='img/bad-1.png') }}" alt="bad" onclick="handleClick(event, '{{ user.user_id }}', 1)"/>
+			<img class="flex-row-item" id="bad-{{ user.user_id }}" style="cursor: pointer;" src="{{ url_for('static', filename='img/bad-1.png') }}" alt="bad" onclick="handleClick(event, '{{ user.user_id }}', 1, 'bad')"/>
                   <!-- <img class="flex-row-item" src="img/smile-1.png" alt="smile 1" /> -->
-                  <img class="flex-row-item" style="cursor: pointer;" src="{{ url_for('static', filename='img/just-1.png') }}" alt="just" onclick="handleClick(event, '{{ user.user_id }}', 2)"/>
+		  <img class="flex-row-item" id="just-{{ user.user_id }}" style="cursor: pointer;" src="{{ url_for('static', filename='img/just-1.png') }}" alt="just" onclick="handleClick(event, '{{ user.user_id }}', 2, 'just')"/>
                   <!-- <img class="flex-row-item" src="img/just-1.png" alt="just 1" /> -->
-                  <img class="flex-row-item" style="cursor: pointer;" src="{{ url_for('static', filename='img/smile-1.png') }}" alt="smile" onclick="handleClick(event, '{{ user.user_id }}', 3)"/>
+		  <img class="flex-row-item" id="smile-{{ user.user_id }}" style="cursor: pointer;" src="{{ url_for('static', filename='img/smile-1.png') }}" alt="smile" onclick="handleClick(event, '{{ user.user_id }}', 3, 'smile')"/>
                   <!-- <img class="flex-row-item" src="img/bad-1.png" alt="bad 1" /> -->
                 </div>
               </div>
@@ -123,11 +123,11 @@
               <!-- <div class="pill-3"><img class="star-2" src="img/star-2.png" alt="star 2" /></div> -->
               <div class="group-8">
                 <div class="flex-row-1">
-                  <img class="flex-row-item" style="cursor: pointer;" src="{{ url_for('static', filename='img/bad-1.png') }}" alt="bad" onclick="handleClick(event, '{{ user.user_id }}', 1)"/>
+			<img class="flex-row-item" id="bad-{{ user.user_id }}" style="cursor: pointer;" src="{{ url_for('static', filename='img/bad-1.png') }}" alt="bad" onclick="handleClick(event, '{{ user.user_id }}', 1, 'bad')"/>
                   <!-- <img class="flex-row-item" src="img/smile-1.png" alt="smile 1" /> -->
-                  <img class="flex-row-item" style="cursor: pointer;" src="{{ url_for('static', filename='img/just-1.png') }}" alt="just" onclick="handleClick(event, '{{ user.user_id }}', 2)"/>
+		  <img class="flex-row-item" id="just-{{ user.user_id }}" style="cursor: pointer;" src="{{ url_for('static', filename='img/just-1.png') }}" alt="just" onclick="handleClick(event, '{{ user.user_id }}', 2, 'just')"/>
                   <!-- <img class="flex-row-item" src="img/just-1.png" alt="just 1" /> -->
-                  <img class="flex-row-item" style="cursor: pointer;" src="{{ url_for('static', filename='img/smile-1.png') }}" alt="smile" onclick="handleClick(event, '{{ user.user_id }}', 3)"/>
+		  <img class="flex-row-item" id="smile-{{ user.user_id }}" style="cursor: pointer;" src="{{ url_for('static', filename='img/smile-1.png') }}" alt="smile" onclick="handleClick(event, '{{ user.user_id }}', 3, 'smile')"/>
                   <!-- <img class="flex-row-item" src="img/bad-1.png" alt="bad 1" /> -->
                 </div>
               </div>
@@ -264,6 +264,7 @@
       function refresh() {
         url = "/users?ref=1";
         window.location.href=url;
+	alert("refreshing..");
       }
       
     </script>

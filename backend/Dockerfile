@@ -1,20 +1,32 @@
-# Use the official Python image from the Docker Hub
-FROM python:3.10
+# Use an official Python runtime as a parent image
+FROM python:3.10-slim
 
 # Set the working directory in the container
 WORKDIR /app
 
-COPY . .
+# Install gcc and other dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    build-essential \
+    libatlas-base-dev \
+    python3-dev \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
 
-# RUN apt-get update
-# RUN apt-get install -y gcc
-# RUN apt-get install -y libmysqlclient-dev
-# RUN apt-get install -y pkg-config
-# RUN rm -rf /var/lib/apt/lists/*
+# Copy the requirements file into the container
+COPY requirements.txt .
 
-RUN pip install --upgrade pip
+RUN pip install --upgrade pip setuptools wheel
+
+# Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
 
-# Specify the entry point for the container to run the Flask app
-# CMD ["python3", "-m", "flask", "run", "--host=0.0.0.0"]
-CMD ["python3", "main.py"]
+# Copy the rest of the working directory contents into the container
+COPY . .
+
+# Make port 80 available to the world outside this container
+EXPOSE 80
+
+# Run uvicorn server
+CMD ["python", "main.py", "--host", "0.0.0.0", "--port", "80"]

@@ -20,18 +20,18 @@ class UserDto:
 def user_to_dto(user: User):
     return UserDto (
         user_id=user.user_id,
-        name=user.name.decode(),
+        name=user.name,
         age=user.age,
-        gender=user.gender.decode(),
-        email=user.email.decode(),
-        # mbti=user.mbti.decode(),
-        job=user.job.decode(),
-        hobby=user.hobby.decode(),
-        fluent=user.fluent.decode(),
-        learning=user.learning.decode(),
+        gender=user.gender,
+        email=user.email,
+        # mbti=user.mbti,
+        job=user.job,
+        hobby=user.hobby,
+        fluent=user.fluent,
+        learning=user.learning,
         level=user.level,
-        url=user.url.decode(),
-        bio=user.bio.decode(),
+        url=user.url,
+        bio=user.bio,
         success=user.success
     )
     
@@ -49,7 +49,7 @@ def user_to_dto(user: User):
 #         receiver = chatroom.user1_id
         
 #     return ChatroomDto (
-#         receiver=receiver.decode(),
-#         # user2_id=chatroom.user2_id.decode(),
+#         receiver=receiver,
+#         # user2_id=chatroom.user2_id,
 #         state=chatroom.state
 #     )

@@ -22,7 +22,7 @@ from model.introduce_sim import *
 from model.collaborative import *
 ###
     
-socketio = SocketIO(app)
+socketio = SocketIO(app, async_mode='eventlet')
 app.config['JWT_SECRET_KEY'] = "super-secret"
 app.config['JWT_TOKEN_LOCATION'] = ['cookies']
 app.config['JWT_ACCESS_COOKIE_PATH'] = '/'
@@ -67,7 +67,7 @@ def signup():
         )
         db.session.add(new_user)
         db.session.commit()
-        
+
         response = make_response()
         return response
     
@@ -93,7 +93,15 @@ def signup_2(id):
             user.success = True
 
             db.session.commit()
-        
+            
+            user_dto = user_to_dto(user)
+            file_path = './updated_train.csv'
+            # 새로운 행 추가
+            new_row = [user_dto.user_id, user_dto.name, convert_gender(user_dto.gender), convert_age(user_dto.age), translate_bio(user_dto.bio), user_dto.fluent, user_dto.learning, convert_level(user_dto.level)]
+            with open(file_path, mode='a', newline='', encoding='utf-8') as file:
+                writer = csv.writer(file)
+                writer.writerow(new_row)
+
             response = make_response()
             return response
         else:
@@ -171,7 +179,7 @@ def refresh():
                     user_dto.name,
                     convert_gender(user_dto.gender),
                     convert_age(user_dto.age),
-                    translate_bio(user_dto.bio),
+                    user_dto.bio,
                     user_dto.fluent,
                     user_dto.learning,
                     convert_level(user_dto.level),
@@ -192,6 +200,45 @@ def refresh():
                 rating.to_user_id,
                 rating.rating,
             ])
+@app.route('/setting', methods=['GET'])
+def setting():
+    
+    # 유저
+    df = pd.read_csv('./k.csv')
+    for index, row in df.iterrows():
+        print(index)
+        new_user = User(
+            id="user"+str(index+1),
+            pw="password"+str(index+1),
+            name=str(row['이름']),
+            age=int(row['연령대']),
+            gender=str(row['성별']),
+            email="korea@naver.com",
+            fluent=str(row['모국어']),
+            learning=str(row['외국어']),
+            level=int(row['외국어 수준']),
+            bio=str(row['자기 소개']),
+            job="doctor",
+            url="default.png",
+            hobby=str(row['자기 소개']),
+            success=True
+        )
+        db.session.add(new_user)
+    
+    db.session.commit()
+    #rating
+    df2 = pd.read_csv('./p.csv')
+    for index, row in df2.iterrows():
+        print(index)
+        new_rating = Rating(
+            from_user_id=int(row['User_ID']),
+            to_user_id=int(row['Target_User_ID']),
+            rating=int(row['Rating']),
+        )
+        db.session.add(new_rating)
+    db.session.commit()
+    
+    return jsonify({"success": True, "message": "Users added successfully"}), 200
 
 def user_query(user_id, age, gen, lev):
     query = User.query
@@ -242,14 +289,20 @@ def users():
     recommend_user_dtos = []
     recommend_users = []
     
+    #print("#################args####################")
+    #print(type(current_user.user_id), type(train), type(convert_gender(gen)), type(convert_age(age)), type(convert_level(lev)))
+    #print("####################end#############")
+    
+    """
     for user_id in intro_recommend(current_user.user_id, train, convert_gender(gen), convert_age(age), convert_level(lev)):
         find_user = user_query(user_id, age, gen, lev)
         # find_user = User.query.filter_by(user_id=user_id).first()
         if find_user:
             recommend_users.append(find_user)
             recommend_user_dtos.append(user_to_dto(find_user))
-    ####
+    """
     
+    ####
     print("################## introduce 끝 ##############")
     print(recommend_users)
     #### collaborative
@@ -265,7 +318,7 @@ def users():
     
     users = [user for user in users if user not in recommend_users]
     for user in users:
-        if (user.id.decode() == current_user_id) or not user.success:
+        if (user.id == current_user_id) or not user.success:
             continue
         user_dtos.append(user_to_dto(user))
     
@@ -325,7 +378,7 @@ def chatrooms():
                 {
                     "id": chatroom.chatroom_id,
                     "receiver": user_to_dto(receiver),
-                    "final_message": chatroom.final_message.decode(),
+                    "final_message": chatroom.final_message,
                     "final_time": chatroom.final_time
                 }
             )
@@ -385,7 +438,7 @@ def get_chatrooms():
                     "url": receiver.url,
                     "sender": user.user_id,
                     "receiver": receiver.user_id,
-                    "final_message": chatroom.final_message.decode(),
+                    "final_message": chatroom.final_message,
                     "final_time": chatroom.final_time
                 }
             )
@@ -416,7 +469,7 @@ def chatroom(id):
                 {
                     "id": chatroom.chatroom_id,
                     "receiver": user_to_dto(receiver),
-                    "final_message": chatroom.final_message.decode(),
+                    "final_message": chatroom.final_message,
                     "final_time": chatroom.final_time
                 }
             )
@@ -440,7 +493,7 @@ def chatroom(id):
                 {
                     "sender": user_to_dto(sender),
                     "receiver": user_to_dto(receiver),
-                    "message": message.message.decode(),
+                    "message": message.message,
                     "created_at": message.created_at
                 }
             )
@@ -476,7 +529,7 @@ def handle_message(data):
     db.session.add(new_message)
     db.session.commit()
     
-    d['translation'] = translate(message, receiver.fluent.decode())
+    d['translation'] = translate(message, receiver.fluent)
     print(d)
     emit('message', json.dumps(d), broadcast=True)
 
@@ -534,4 +587,4 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     # app.run(debug=True)
-    socketio.run(app, debug=True, port=5000)
+    socketio.run(app, debug=True, host='0.0.0.0', port=5000)

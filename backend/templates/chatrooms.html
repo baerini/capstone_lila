@@ -213,12 +213,15 @@
         window.location.href=url;
       }
       
-      var socket = io.connect('http://localhost:5000');
+      var baseUrl = 'http://' + window.location.hostname + ':' + window.location.port;
+      var socket = io.connect(baseUrl);
       var chatroomsDiv = document.getElementById("chatrooms");
       socket.on('message', function(data) {
         data = JSON.parse(data);
         msgDiv = document.getElementById('messages');
         
+	var me = "{{ sender.user_id }}";
+
         //test
         if(me==data["sender"] || me==data["receiver"]) {
           

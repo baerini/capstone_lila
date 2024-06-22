@@ -7,6 +7,6 @@ pandas
 googletrans
 tqdm
 konlpy
-mysql==0.0.3
-mysqlclient==2.0.1
-mysql-connector==2.2.9
+scikit-learn==1.5.0
+scikit-surprise==1.1.4
+

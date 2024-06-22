@@ -228,8 +228,8 @@
       function home() {
         window.location.href="/";
       }
-      
-      var socket = io.connect('http://localhost:5000');
+      var baseUrl = 'http://' + window.location.hostname + ':' + window.location.port;
+      var socket = io.connect(baseUrl);
       socket.on('message', function(data) {
         console.log(data);
         
